@@ -14,6 +14,7 @@
   "author": "Brenten Lovato <brenten@shop.co>",
   "license": "ISC",
   "dependencies": {
+    "babel-runtime": "^6.23.0",
     "classnames": "^2.2.5",
     "history": "^3.0.0",
     "react": "^15.3.0",

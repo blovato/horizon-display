@@ -1,0 +1,74 @@
+html, body, #app, .Home {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+}
+
+svg {
+  align-self: center;
+  height: 100%;
+  width: 150%;
+  filter: blur(100px);
+  -webkit-filter: blur(100px);
+  -moz-filter: blur(100px);
+  -o-filter: blur(100px);
+  -ms-filter: blur(100px);
+}
+
+h1 {
+  background: transparent;
+}
+
+.rect {
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+
+.dawn1 {
+  fill: black;
+  animation-name: dawn1;
+}
+
+.dawn2 {
+  fill: white;
+  animation-name: dawn2;
+}
+
+.dawn3 {
+  fill: black;
+  animation-name: dawn3;
+}
+
+.dawn4 {
+  fill: white;
+  animation-name: dawn4;
+}
+
+@keyframes dawn1 {
+    0% {fill: black;}
+    50% {fill: white;}
+    100% {fill: black;}
+}
+
+@keyframes dawn2 {
+    0% {fill: white;}
+    50% {fill: black;}
+    100% {fill: white;}
+}
+
+@keyframes dawn3 {
+    0% {fill: black;}
+    50% {fill: white;}
+    100% {fill: black;}
+}
+
+@keyframes dawn4 {
+    0% {fill: white;}
+    50% {fill: black;}
+    100% {fill: white;}
+}
