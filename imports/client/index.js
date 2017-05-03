@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Home() {
+function MainPage() {
   return (
     <div className={classNames('Home', 'foo', 'bar')} >
       <h1>Welcome to Meteor!</h1>
@@ -10,4 +10,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default MainPage;

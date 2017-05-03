@@ -1,1 +1,1 @@
-import './User.js';
+import './mixpanel.js';
