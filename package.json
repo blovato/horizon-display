@@ -1,5 +1,5 @@
 {
-  "name": "horizon display",
+  "name": "horizon-display",
   "version": "1.0.0",
   "description": "horizon display",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/AdamBrodzinski/meteor-react-boilerplate"
   },
-  "author": "Brenten Locato <brenten@shop.co>",
+  "author": "Brenten Lovato <brenten@shop.co>",
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.5",
