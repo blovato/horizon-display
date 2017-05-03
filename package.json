@@ -1,7 +1,7 @@
 {
-  "name": "meteor-react-boilerplate",
-  "version": "1.0.1",
-  "description": "Meteor React Boilerplate",
+  "name": "horizon display",
+  "version": "1.0.0",
+  "description": "horizon display",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,12 +10,8 @@
     "type": "git",
     "url": "https://github.com/AdamBrodzinski/meteor-react-boilerplate"
   },
-  "author": "Ryen Beatty <ryen.beatty@gmail.com> (http://ryenbeatty.co)",
+  "author": "Brenten Locato <brenten@shop.co>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AdamBrodzinski/meteor-react-boilerplate/issues"
-  },
-  "homepage": "https://github.com/AdamBrodzinski/meteor-react-boilerplate",
   "dependencies": {
     "classnames": "^2.2.5",
     "history": "^3.0.0",
