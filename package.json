@@ -19,5 +19,11 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router-dom": "^4.0.0-beta.6"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-root-slash-import": "^1.1.0"
   }
 }
