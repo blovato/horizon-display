@@ -1,1 +1,3 @@
-import './mixpanel.js';
+import './mixpanel';
+import './rest';
+import './People/people.collection';
