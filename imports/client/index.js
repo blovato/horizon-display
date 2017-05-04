@@ -66,7 +66,7 @@ class MainPage extends React.Component {
         rect2: 'sunrise2',
         rect3: 'sunrise3',
         rect4: 'sunrise4'});
-    } else if (hour >= 8 && hour< 20) {
+    } else if (false) {
       this.setState({
         rect1: 'daytime1',
         rect2: 'daytime2',
