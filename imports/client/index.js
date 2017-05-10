@@ -55,7 +55,7 @@ class MainPage extends React.Component {
         rect2: 'transition4-2',
         rect3: 'transition4-3',
         rect4: 'transition4-4'});
-      setTimeout(() => this.timeOfDayColorChange(hour), 30000);
+      setTimeout(() => this.timeOfDayColorChange(hour), 15000);
     }
   }
 
@@ -66,7 +66,7 @@ class MainPage extends React.Component {
         rect2: 'sunrise2',
         rect3: 'sunrise3',
         rect4: 'sunrise4'});
-    } else if (false) {
+    } else if (hour >= 8 && hour< 20) {
       this.setState({
         rect1: 'daytime1',
         rect2: 'daytime2',
