@@ -21,7 +21,11 @@ function queryMixpanel(jql) {
 
 function seedAllRegisteredUsers() {
   queryMixpanel(jqlQueries.allPeopleNotTestAccount)
-    .then((res) => { console.log(`Mixpanel returned ${res.data.length} people`); return res.data; })
+    .then((res) => {
+      console.log(`Mixpanel returned ${res.data.length} people`);
+      if (res.data.length < People.find({}).fetch().length) return [];
+      return res.data;
+    })
     // insert to db
     .then(users => users.forEach(({ distinct_id, properties }) => {
       People.upsert(distinct_id, {
