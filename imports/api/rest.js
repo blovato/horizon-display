@@ -10,11 +10,23 @@ Picker.middleware(bodyParser.json());
 Picker.route('/webhook/user-registered', (params, req, res, next) => {
   if (req.method !== 'POST') return next();
   const peoples = req.body && JSON.parse(req.body.users);
-  const insertDoc = peoples.length && peoples.filter((person) => {
-    return
-  });
-  // People.upsert()
-  res.end('balh');
+  try {
+    peoples.forEach(({ $distinct_id, $properties }) => {
+      People.upsert($distinct_id, {
+        $set: {
+          _id: $distinct_id,
+          email: $properties.$email,
+          createdAt: $properties.$created,
+        },
+      });
+    });
+    res.statusCode = 200;
+    res.end();
+  } catch (e) {
+    res.statusCode = 404;
+    console.error(e);
+    res.end(JSON.stringify(e));
+  }
 });
 
 
