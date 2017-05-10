@@ -10,18 +10,20 @@ html, body, #app, .Home {
 }
 
 svg {
+  position: absolute;
+  align-self: center;
   align-self: center;
   height: 100%;
   width: 150%;
-  // filter: blur(100px);
-  // -webkit-filter: blur(100px);
-  // -moz-filter: blur(100px);
-  // -o-filter: blur(100px);
-  // -ms-filter: blur(100px);
-  transform: scale(1.04)
+  filter: blur(80px);
+  -webkit-filter: blur(80px);
+  -moz-filter: blur(80px);
+  -o-filter: blur(80px);
+  -ms-filter: blur(80px);
+  transform: scale(1.5)
 }
 
-.rect, .circle {
+.shape {
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
@@ -68,6 +70,26 @@ svg {
   100% {fill: #F0A826;}
 }
 
+.transition1-5 {
+  fill: #2212D7;
+  animation-name: transition1-5;
+}
+
+@keyframes transition1-5 {
+  0% {fill: #2212D7;}
+  100% {fill: #C02C71;}
+}
+
+.transition1-6 {
+  fill: #007273;
+  animation-name: transition1-6;
+}
+
+@keyframes transition1-6 {
+  0% {fill: #007273;}
+  100% {fill: #D54A10;}
+}
+
 // Transition from Sunrise to Daytime
 
 .transition2-1 {
@@ -108,6 +130,26 @@ svg {
 @keyframes transition2-4 {
   0% {fill: #F0A826;}
   100% {fill: #E78F00;}
+}
+
+.transition2-5 {
+  fill: #C02C71;
+  animation-name: transition2-5;
+}
+
+@keyframes transition2-5 {
+  0% {fill: #C02C71;}
+  100% {fill: #0D85BE;}
+}
+
+.transition2-6 {
+  fill: #D54A10;
+  animation-name: transition2-6;
+}
+
+@keyframes transition2-6 {
+  0% {fill: #D54A10;}
+  100% {fill: #E6C522;}
 }
 
 // Transition from Daytime to Sunset
@@ -152,6 +194,26 @@ svg {
   100% {fill: #EBD056;}
 }
 
+.transition3-5 {
+  fill: #0D85BE;
+  animation-name: transition3-5;
+}
+
+@keyframes transition3-5 {
+  0% {fill: #0D85BE;}
+  100% {fill: #1E49DE;}
+}
+
+.transition3-6 {
+  fill: #E6C522;
+  animation-name: transition3-6;
+}
+
+@keyframes transition3-6 {
+  0% {fill: #E6C522;}
+  100% {fill: #E96C00;}
+}
+
 // Transition from Sunset to Night
 
 .transition4-1 {
@@ -194,6 +256,26 @@ svg {
   100% {fill: #00D6D7;}
 }
 
+.transition4-5 {
+  fill: #1E49DE;
+  animation-name: transition4-5;
+}
+
+@keyframes transition4-5 {
+  0% {fill: #1E49DE;}
+  100% {fill: #2212D7;}
+}
+
+.transition4-6 {
+  fill: #E96C00;
+  animation-name: transition4-6;
+}
+
+@keyframes transition4-6 {
+  0% {fill: #E96C00;}
+  100% {fill: #007273;}
+}
+
 // sunrise animations
 
 .sunrise1 {
@@ -214,11 +296,7 @@ svg {
 
 @keyframes sunrise2 {
   0% {fill: #C92E77;}
-  50% {
-    fill: #F2FC5D;
-    ry: 25%;
-    rx: 25%
-  }
+  50% {fill: #D47211;}
   100% {fill: #C92E77;}
 }
 
@@ -229,10 +307,7 @@ svg {
 
 @keyframes sunrise3 {
   0% {fill: #E75012;}
-  50% {
-    fill: #B63907;
-    r: 45%;
-  }
+  50% {fill: #F14D37;}
   100% {fill: #E75012;}
 }
 
@@ -243,11 +318,38 @@ svg {
 
 @keyframes sunrise4 {
     0% {fill: #FCB028;}
-    50% {
-      fill: #AA6D00;
-      r: 30%;
-    }
+    50% {fill: #AA6D00;}
     100% {fill: #FCB028;}
+}
+
+.sunrise5 {
+  fill: #C92E77;
+  animation-name: sunrise5;
+}
+
+@keyframes sunrise5 {
+  0% {fill: #C92E77;}
+  50% {
+    fill: #D47211;
+    ry: 20%;
+    rx: 20%
+  }
+  100% {fill: #C92E77;}
+}
+
+.sunrise6 {
+  fill: #E75012;
+  animation-name: sunrise6;
+}
+
+@keyframes sunrise6 {
+  0% {fill: #E75012;}
+  50% {
+    fill: #F14D37;
+    ry: 20%;
+    rx: 20%;
+  }
+  100% {fill: #E75012;}
 }
 
 // daytime animations
@@ -259,7 +361,7 @@ svg {
 
 @keyframes daytime1 {
   0% {fill: #0043B0;}
-  50% {fill: #136DFB;}
+  50% {fill: #1021A4;}
   100% {fill: #0043B0;}
 }
 
@@ -270,11 +372,7 @@ svg {
 
 @keyframes daytime2 {
   0% {fill: #0D85BE;}
-  50% {
-    fill: #045075;
-    ry: 25%;
-    rx: 25%
-  }
+  50% {fill: #3294C4;}
   100% {fill: #0D85BE;}
 }
 
@@ -285,10 +383,7 @@ svg {
 
 @keyframes daytime3 {
   0% {fill: #E6C522;}
-  50% {
-    fill: #F1F34D;
-    r: 45%
-  }
+  50% {fill: #F1F34D;}
   100% {fill: #E6C522;}
 }
 
@@ -299,11 +394,38 @@ svg {
 
 @keyframes daytime4 {
   0% {fill: #E78F00;}
-  50% {
-    fill: #903600;
-    r: 30%
-  }
+  50% {fill: #903600;}
   100% {fill: #E78F00;}
+}
+
+.daytime5 {
+  fill: #0D85BE;
+  animation-name: daytime5;
+}
+
+@keyframes daytime5 {
+  0% {fill: #0D85BE;}
+  50% {
+    fill: #3294C4;
+    ry: 20%;
+    rx: 20%
+  }
+  100% {fill: #0D85BE;}
+}
+
+.daytime6 {
+  fill: #E6C522;
+  animation-name: daytime6;
+}
+
+@keyframes daytime6 {
+  0% {fill: #E6C522;}
+  50% {
+    fill: #F1F34D;
+    ry: 20%;
+    rx: 20%;
+  }
+  100% {fill: #E6C522;}
 }
 
 // dusk animations
@@ -313,9 +435,21 @@ svg {
   animation-name: dusk1;
 }
 
+@keyframes dusk1 {
+  0% {fill: #0000C6;}
+  50% {fill: #582AC9;}
+  100% {fill: #0000C6;}
+}
+
 .dusk2 {
   fill: #1E4AE0;
   animation-name: dusk2;
+}
+
+@keyframes dusk2 {
+  0% {fill: #1E4AE0;}
+  50% {fill: #310896;}
+  100% {fill: #1E4AE0;}
 }
 
 .dusk3 {
@@ -323,43 +457,51 @@ svg {
   animation-name: dusk3;
 }
 
+@keyframes dusk3 {
+  0% {fill: #E96C00;}
+  50% {fill: #BB5600;}
+  100% {fill: #E96C00;}
+}
+
 .dusk4 {
   fill: #E8CE55;
   animation-name: dusk4;
 }
 
-@keyframes dusk1 {
-  0% {fill: #0000C6;}
-  50% {fill: #191E37;}
-  100% {fill: #0000C6;}
+@keyframes dusk4 {
+  0% {fill: #E8CE55;}
+  50% {fill: #F5BA43;}
+  100% {fill: #E8CE55;}
 }
 
-@keyframes dusk2 {
+.dusk5 {
+  fill: #1E4AE0;
+  animation-name: dusk5;
+}
+
+@keyframes dusk5 {
   0% {fill: #1E4AE0;}
   50% {
-    fill: #65889A;
-    ry: 25%;
-    rx: 25%
+    fill: #310896;
+    ry: 20%;
+    rx: 20%
   }
   100% {fill: #1E4AE0;}
 }
 
-@keyframes dusk3 {
-  0% {fill: #E96C00;}
-  50% {
-    fill: #F8C15D;
-    r: 45%;
-  }
-  100% {fill: #E96C00;}
+.dusk6 {
+  fill: #E96C00;
+  animation-name: dusk6;
 }
 
-@keyframes dusk4 {
-  0% {fill: #E8CE55;}
+@keyframes dusk6 {
+  0% {fill: #E96C00;}
   50% {
-    fill: #D7C271;
-    r: 30%;
+    fill: #BB5600;
+    ry: 20%;
+    rx: 20%;
   }
-  100% {fill: #E8CE55;}
+  100% {fill: #E96C00;}
 }
 
 // night animations
@@ -370,9 +512,9 @@ svg {
 }
 
 @keyframes night1 {
-  0% {fill: #000079;}
-  50% {fill: #000034;}
-  100% {fill: #000079;}
+  0% {fill: #00005A;}
+  50% {fill: #170035;}
+  100% {fill: #00005A;}
 }
 
 .night2 {
@@ -382,11 +524,7 @@ svg {
 
 @keyframes night2 {
   0% {fill: #2212D7;}
-  50% {
-    fill: #4E91D6;
-    ry: 25%;
-    rx: 25%
-  }
+  50% {fill: #250057;}
   100% {fill: #2212D7;}
 }
 
@@ -397,10 +535,7 @@ svg {
 
 @keyframes night3 {
   0% {fill: #007374;}
-  50% {
-    fill: #1842A3;
-    r: 45%;
-  }
+  50% {fill: #079292;}
   100% {fill: #007374;}
 }
 
@@ -411,9 +546,36 @@ svg {
 
 @keyframes night4 {
     0% {fill: #00D6D7;}
-    50% {
-      fill: #008080;
-      r: 30%;
-    }
+    50% {fill: #48ADAD;}
     100% {fill: #00D6D7;}
+}
+
+.night5 {
+  fill: #2212D7;
+  animation-name: night5;
+}
+
+@keyframes night5 {
+  0% {fill: #2212D7;}
+  50% {
+    fill: #250057;
+    ry: 20%;
+    rx: 20%;
+  }
+  100% {fill: #2212D7;}
+}
+
+.night6 {
+  fill: #007374;
+  animation-name: night6;
+}
+
+@keyframes night6 {
+  0% {fill: #007374;}
+  50% {
+    fill: #079292;
+    ry: 20%;
+    rx: 20%;
+  }
+  100% {fill: #007374;}
 }
