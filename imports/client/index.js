@@ -6,7 +6,7 @@ class MainPage extends React.Component {
   constructor() {
     super();
 
-    this.state = {rect1: '', rect2: '', rect3: '', rect4: ''};
+    this.state = {shape1: '', shape2: '', shape3: '', shape4: ''};
   }
 
   componentDidMount() {
@@ -25,35 +25,42 @@ class MainPage extends React.Component {
     if (hour === 6 && (min > 0 && min < 6) ||
         (initialize === 'init' && (hour >= 6 && hour< 8))) {
       this.setState({
-        rect1: 'transition1-1',
-        rect2: 'transition1-2',
-        rect3: 'transition1-3',
-        rect4: 'transition1-4'});
+        shape1: 'transition1-1',
+        shape2: 'transition1-2',
+        shape3: 'transition1-3',
+        shape4: 'transition1-4',
+        shape5: 'transition1-5',
+        shape6: 'transition1-6'});
       setTimeout(() => this.timeOfDayColorChange(hour), 15000);
     } else if (hour === 8 && (min > 0 && min < 6) ||
         (initialize === 'init' && (hour >= 8 && hour< 20))) {
       this.setState({
-        rect1: 'transition2-1',
-        rect2: 'transition2-2',
-        rect3: 'transition2-3',
-        rect4: 'transition2-4'});
+        shape1: 'transition2-1',
+        shape2: 'transition2-2',
+        shape3: 'transition2-3',
+        shape4: 'transition2-4',
+        shape5: 'transition2-5',
+        shape6: 'transition2-6'});
       setTimeout(() => this.timeOfDayColorChange(hour), 15000);
     } else if ((hour === 20 && (min > 0 && min < 6)) ||
         (initialize === 'init' && (hour >= 20 && hour< 22))) {
-          console.log('start');
       this.setState({
-        rect1: 'transition3-1',
-        rect2: 'transition3-2',
-        rect3: 'transition3-3',
-        rect4: 'transition3-4'});
+        shape1: 'transition3-1',
+        shape2: 'transition3-2',
+        shape3: 'transition3-3',
+        shape4: 'transition3-4',
+        shape5: 'transition3-5',
+        shape6: 'transition3-6'});
       setTimeout(() => this.timeOfDayColorChange(hour), 15000);
     } else if ((hour === 22 && (min > 0) && (min < 6)) ||
         (initialize === 'init' && (hour >= 22 || hour < 6))) {
       this.setState({
-        rect1: 'transition4-1',
-        rect2: 'transition4-2',
-        rect3: 'transition4-3',
-        rect4: 'transition4-4'});
+        shape1: 'transition4-1',
+        shape2: 'transition4-2',
+        shape3: 'transition4-3',
+        shape4: 'transition4-4',
+        shape5: 'transition4-5',
+        shape6: 'transition4-6'});
       setTimeout(() => this.timeOfDayColorChange(hour), 15000);
     }
   }
@@ -61,28 +68,36 @@ class MainPage extends React.Component {
   timeOfDayColorChange(hour) {
     if (hour >= 6 && hour< 8) {
       this.setState({
-        rect1: 'sunrise1',
-        rect2: 'sunrise2',
-        rect3: 'sunrise3',
-        rect4: 'sunrise4'});
+        shape1: 'sunrise1',
+        shape2: 'sunrise2',
+        shape3: 'sunrise3',
+        shape4: 'sunrise4',
+        shape5: 'sunrise5',
+        shape6: 'sunrise6'});
     } else if (hour >= 8 && hour< 20) {
       this.setState({
-        rect1: 'daytime1',
-        rect2: 'daytime2',
-        rect3: 'daytime3',
-        rect4: 'daytime4'});
+        shape1: 'daytime1',
+        shape2: 'daytime2',
+        shape3: 'daytime3',
+        shape4: 'daytime4',
+        shape5: 'daytime5',
+        shape6: 'daytime6'});
     } else if (hour >= 20 && hour< 22) {
       this.setState({
-        rect1: 'dusk1',
-        rect2: 'dusk2',
-        rect3: 'dusk3',
-        rect4: 'dusk4'});
+        shape1: 'dusk1',
+        shape2: 'dusk2',
+        shape3: 'dusk3',
+        shape4: 'dusk4',
+        shape5: 'dusk5',
+        shape6: 'dusk6'});
     } else if (hour >= 22 || hour < 6) {
       this.setState({
-        rect1: 'night1',
-        rect2: 'night2',
-        rect3: 'night3',
-        rect4: 'night4'});
+        shape1: 'night1',
+        shape2: 'night2',
+        shape3: 'night3',
+        shape4: 'night4',
+        shape5: 'night5',
+        shape6: 'night6'});
     }
   }
 
@@ -90,12 +105,12 @@ class MainPage extends React.Component {
     return (
       <div className={classNames('Home', 'foo', 'bar')} >
         <svg>
-          <rect className={classNames('rect', this.state.rect1)} x='0%' y='-50%' width='100%' height='85%'/>
-          <rect className={classNames('rect', this.state.rect2)} x='0' y='35%' width='100%' height='25%'/>
-          <ellipse className={classNames('circle', this.state.rect2)} cx="70%" cy="40%" rx="20%" ry="15%"/>
-          <rect className={classNames('rect', this.state.rect3)} x='0' y='60%' width='100%' height='25%'/>
-          <rect className={classNames('rect', this.state.rect4)} x='0' y='85%' width='100%' height='50%'/>
-          <circle className={classNames('circle', this.state.cir2)} cx="25%" cy="50%" r='10%' fill='yellow' />
+          <rect className={classNames('shape', this.state.shape1)} x='0%' y='-50%' width='100%' height='95%'/>
+          <rect className={classNames('shape', this.state.shape2)} x='0' y='35%' width='100%' height='35%'/>
+          <ellipse className={classNames('shape', this.state.shape5)} cx="65%" cy="40%" rx="17%" ry="12%"/>
+          <rect className={classNames('shape', this.state.shape3)} x='0' y='50%' width='100%' height='25%'/>
+          <ellipse className={classNames('shape', this.state.shape6)} cx="35%" cy="55%" rx="17%" ry="12%"/>
+          <rect className={classNames('shape', this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
         </svg>
       </div>
     );
@@ -103,3 +118,5 @@ class MainPage extends React.Component {
 }
 
 export default MainPage;
+
+// <ellipse className={classNames('shape', this.state.shape4)} cx="65%" cy="75%" rx="17%" ry="12%"/>
