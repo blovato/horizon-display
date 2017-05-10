@@ -2,9 +2,14 @@ import { People } from './People/people.collection';
 import fetch from './helpers/fetch';
 const { MIXPANEL_SECRET } = process.env;
 
-
 const jqlQueries = {
-  allPeople: 'function main(){return People()}',
+  // note: symbol '&&' not supported in jql (I think), chaining filters instead
+  allPeopleNotTestAccount: `function main(){
+    return People()
+      .filter(function(user){return !!user.properties.$email})
+      .filter(function(user){return user.properties.$email.indexOf("@shop.co") < 0})
+      .filter(function(user){return user.properties.$email !== "foo@bar"})
+  }`,
 };
 
 function queryMixpanel(jql) {
@@ -15,11 +20,19 @@ function queryMixpanel(jql) {
 }
 
 function seedAllRegisteredUsers() {
-  const hasPeople = !!People.find({}, { fields: { _id: 1 } }).fetch().length;
-  if (hasPeople) return;
-  queryMixpanel(jqlQueries.allPeople)
-    .then((res) => console.log(res.data.length))
-    // todo: upsert People db
+  queryMixpanel(jqlQueries.allPeopleNotTestAccount)
+    .then((res) => { console.log(`Mixpanel returned ${res.data.length} people`); return res.data; })
+    // insert to db
+    .then(users => users.forEach(({ distinct_id, properties }) => {
+      People.upsert(distinct_id, {
+        $set: {
+          _id: distinct_id,
+          email: properties.$email,
+          createdAt: properties.$created,
+        },
+      });
+    }))
+    .then(() => console.log(`People DB seeded with ${People.find({}).fetch().length} people`))
     .catch((err) => console.error(err));
 }
 
