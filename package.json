@@ -14,10 +14,11 @@
   "author": "Brenten Lovato <brenten@shop.co>",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.1",
     "babel-runtime": "^6.23.0",
+    "body-parser": "^1.17.1",
     "classnames": "^2.2.5",
     "history": "^3.0.0",
+    "moment": "^2.18.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0"
   },

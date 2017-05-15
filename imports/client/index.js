@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import classNames from 'classnames';
 import './index.less';
 
@@ -6,39 +7,56 @@ class MainPage extends React.Component {
   constructor() {
     super();
 
-    this.state = {shape1: '', shape2: '', shape3: '', shape4: ''};
+    this.state = {shape1: '',
+      shape2: '',
+      shape3: '',
+      shape4: '',
+      shape5: '',
+      shape6: '',
+      date: '',
+      time: ''};
   }
 
   componentDidMount() {
-    this.colorTransitionCheck('init');
+    this.handleTime('init');
     this.incrementTime();
   }
 
   incrementTime() {
-    setInterval(() => this.colorTransitionCheck(), 300000);
+    setInterval(() => this.handleTime(), 1000);
   }
 
-  colorTransitionCheck(initialize = '') {
-    const date = new Date;
-    const hour = date.getHours();
-    const min = date.getMinutes();
+  handleTime(initialize = ''){
+    const now = moment();
 
-    if (hour === 6 && (min > 0 && min < 6) ||
-        (initialize === 'init' && (hour >= 6 && hour< 8))) {
-        this.colorTransition(1, "sunrise");
-    } else if (hour === 8 && (min > 0 && min < 6) ||
-        (initialize === 'init' && (hour >= 8 && hour< 20))) {
-        this.colorTransition(2, "daytime");
-    } else if ((hour === 20 && (min > 0 && min < 6)) ||
-        (initialize === 'init' && (hour >= 20 && hour< 22))) {
-        this.colorTransition(3, "dusk");
-    } else if ((hour === 22 && (min > 0) && (min < 6)) ||
-        (initialize === 'init' && (hour >= 22 || hour < 6))) {
-        this.colorTransition(4, "night");
+    if (initialize === 'init') {
+      this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
+      this.colorTransition(now.format('HH'), 'init');
+    } else if (now.format('HH:mm') !== this.state.time) {
+      if (now.format('HH') !== this.state.time.slice(0,2)) {
+        this.colorTransition(now.format('HH'));
+      }
+      this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
     }
   }
 
-  colorTransition(transitionNum, timeOfDay) {
+  colorTransition(hour, initialize = '') {
+    if (hour === 6 ||
+        (initialize === 'init' && (hour >= 6 && hour< 8))) {
+        this.colorTransitionSet(1, "sunrise");
+    } else if (hour === 8 ||
+        (initialize === 'init' && (hour >= 8 && hour< 20))) {
+        this.colorTransitionSet(2, "daytime");
+    } else if (hour === 20 ||
+        (initialize === 'init' && (hour >= 20 && hour< 22))) {
+        this.colorTransitionSet(3, "dusk");
+    } else if (hour === 22 ||
+        (initialize === 'init' && (hour >= 22 || hour < 6))) {
+        this.colorTransitionSet(4, "night");
+    }
+  }
+
+  colorTransitionSet(transitionNum, timeOfDay) {
     this.setState({
       shape1: `transition${transitionNum}-1`,
       shape2: `transition${transitionNum}-2`,
@@ -61,6 +79,7 @@ class MainPage extends React.Component {
   }
 
   render () {
+    console.log(this.state);
     return (
       <div className={classNames('Home', 'foo', 'bar')} >
         <svg>
@@ -71,6 +90,10 @@ class MainPage extends React.Component {
           <ellipse className={classNames('shape', this.state.shape6)} cx='35%' cy='55%' rx='17%' ry='12%'/>
           <rect className={classNames('shape', this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
         </svg>
+        <div className={'current-info'}>
+          <p className={'time'}>{this.state.time}</p>
+          <p className={'date'}>{this.state.date}</p>
+        </div>
       </div>
     );
   }
