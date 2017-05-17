@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
+import getSanFranciscoWeather from '/imports/api/weather';
 import classNames from 'classnames';
+import DisplayData from './dataDisplay/dataDisplay';
 import './index.less';
 
 class MainPage extends React.Component {
@@ -12,33 +14,35 @@ class MainPage extends React.Component {
       shape3: '',
       shape4: '',
       shape5: '',
-      shape6: '',
-      date: '',
-      time: ''};
+      shape6: ''};
+    this.colorTransition = this.colorTransition.bind(this);
   }
 
-  componentDidMount() {
-    this.handleTime('init');
-    this.incrementTime();
-  }
-
-  incrementTime() {
-    setInterval(() => this.handleTime(), 1000);
-  }
-
-  handleTime(initialize = ''){
-    const now = moment();
-
-    if (initialize === 'init') {
-      this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
-      this.colorTransition(now.format('HH'), 'init');
-    } else if (now.format('HH:mm') !== this.state.time) {
-      if (now.format('HH') !== this.state.time.slice(0,2)) {
-        this.colorTransition(now.format('HH'));
-      }
-      this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
-    }
-  }
+  // componentDidMount() {
+  //   this.handleTime('init');
+  //   this.incrementTime();
+  //   getSanFranciscoWeather()
+  //     .then(res => {this.setState({weather: res.data});})
+  //     .catch(err => console.error(err));
+  // }
+  //
+  // incrementTime() {
+  //   setInterval(() => this.handleTime(), 1000);
+  // }
+  //
+  // handleTime(initialize = ''){
+  //   const now = moment();
+  //
+  //   if (initialize === 'init') {
+  //     this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
+  //     this.colorTransition(now.format('HH'), 'init');
+  //   } else if (now.format('HH:mm') !== this.state.time) {
+  //     if (now.format('HH') !== this.state.time.slice(0,2)) {
+  //       this.colorTransition(now.format('HH'));
+  //     }
+  //     this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
+  //   }
+  // }
 
   colorTransition(hour, initialize = '') {
     if (hour === 6 ||
@@ -79,7 +83,6 @@ class MainPage extends React.Component {
   }
 
   render () {
-    console.log(this.state);
     return (
       <div className={classNames('Home', 'foo', 'bar')} >
         <svg>
@@ -90,10 +93,9 @@ class MainPage extends React.Component {
           <ellipse className={classNames('shape', this.state.shape6)} cx='35%' cy='55%' rx='17%' ry='12%'/>
           <rect className={classNames('shape', this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
         </svg>
-        <div className={'current-info'}>
-          <p className={'time'}>{this.state.time}</p>
-          <p className={'date'}>{this.state.date}</p>
-        </div>
+        <DisplayData
+          colorTransition={this.colorTransition}
+        />
       </div>
     );
   }
