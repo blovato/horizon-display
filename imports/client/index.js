@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import getSanFranciscoWeather from '/imports/api/weather';
 import classNames from 'classnames';
 import DisplayData from './dataDisplay/dataDisplay';
+import UserCountCircle from './userCountCircle/userCountCircle.container';
 import './index.less';
 
 class MainPage extends React.Component {
@@ -57,9 +57,10 @@ class MainPage extends React.Component {
   }
 
   render () {
+    console.log();
     return (
       <div className={classNames('Home', 'foo', 'bar')} >
-        <svg>
+        <svg className={'background'}>
           <rect className={classNames('shape', this.state.shape1)} x='0%' y='-50%' width='100%' height='95%'/>
           <rect className={classNames('shape', this.state.shape2)} x='0' y='35%' width='100%' height='35%'/>
           <ellipse className={classNames('shape', this.state.shape5)} cx='65%' cy='40%' rx='17%' ry='12%'/>
@@ -67,9 +68,8 @@ class MainPage extends React.Component {
           <ellipse className={classNames('shape', this.state.shape6)} cx='35%' cy='55%' rx='17%' ry='12%'/>
           <rect className={classNames('shape', this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
         </svg>
-        <DisplayData
-          colorTransition={this.colorTransition}
-        />
+        <DisplayData colorTransition={this.colorTransition} />
+        <UserCountCircle />
       </div>
     );
   }

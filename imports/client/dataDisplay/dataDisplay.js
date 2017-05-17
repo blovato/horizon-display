@@ -4,7 +4,7 @@ import getSanFranciscoWeather from '/imports/api/weather';
 import classNames from 'classnames';
 import './dataDisplay.less';
 
-class MainPage extends React.Component {
+class DataDisplay extends React.Component {
   constructor() {
     super();
 
@@ -68,4 +68,4 @@ class MainPage extends React.Component {
   }
 }
 
-export default MainPage;
+export default DataDisplay;
