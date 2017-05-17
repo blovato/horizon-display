@@ -18,32 +18,6 @@ class MainPage extends React.Component {
     this.colorTransition = this.colorTransition.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.handleTime('init');
-  //   this.incrementTime();
-  //   getSanFranciscoWeather()
-  //     .then(res => {this.setState({weather: res.data});})
-  //     .catch(err => console.error(err));
-  // }
-  //
-  // incrementTime() {
-  //   setInterval(() => this.handleTime(), 1000);
-  // }
-  //
-  // handleTime(initialize = ''){
-  //   const now = moment();
-  //
-  //   if (initialize === 'init') {
-  //     this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
-  //     this.colorTransition(now.format('HH'), 'init');
-  //   } else if (now.format('HH:mm') !== this.state.time) {
-  //     if (now.format('HH') !== this.state.time.slice(0,2)) {
-  //       this.colorTransition(now.format('HH'));
-  //     }
-  //     this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
-  //   }
-  // }
-
   colorTransition(hour, initialize = '') {
     if (hour === 6 ||
         (initialize === 'init' && (hour >= 6 && hour< 8))) {
