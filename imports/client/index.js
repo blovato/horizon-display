@@ -18,18 +18,18 @@ class MainPage extends React.Component {
     this.colorTransition = this.colorTransition.bind(this);
   }
 
-  colorTransition(hour, initialize = '') {
+  colorTransition(hour, initialize = false) {
     if (hour === 6 ||
-        (initialize === 'init' && (hour >= 6 && hour< 8))) {
+        (initialize && (hour >= 6 && hour< 8))) {
         this.colorTransitionSet(1, "sunrise");
     } else if (hour === 8 ||
-        (initialize === 'init' && (hour >= 8 && hour< 20))) {
+        (initialize && (hour >= 8 && hour< 20))) {
         this.colorTransitionSet(2, "daytime");
     } else if (hour === 20 ||
-        (initialize === 'init' && (hour >= 20 && hour< 22))) {
+        (initialize && (hour >= 20 && hour< 22))) {
         this.colorTransitionSet(3, "dusk");
     } else if (hour === 22 ||
-        (initialize === 'init' && (hour >= 22 || hour < 6))) {
+        (initialize && (hour >= 22 || hour < 6))) {
         this.colorTransitionSet(4, "night");
     }
   }
