@@ -1,7 +1,7 @@
 import { People } from './People/people.collection';
 import fetch from './helpers/fetch';
 const { MIXPANEL_SECRET } = process.env;
-
+if (!MIXPANEL_SECRET && Meteor.isServer) console.error('Missing MIXPANEL_SECRET');
 const jqlQueries = {
   // note: symbol '&&' not supported in jql (I think), chaining filters instead
   allPeopleNotTestAccount: `function main(){
