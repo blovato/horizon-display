@@ -2,6 +2,7 @@ html, body, #app, .Home {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  background-color: #000000;
 }
 
 .Home {
@@ -9,7 +10,11 @@ html, body, #app, .Home {
   flex-direction: column;
 }
 
-.background {
+#flock {
+  position: absolute;
+}
+
+.background, .background-dark {
   position: absolute;
   align-self: center;
   align-self: center;
@@ -23,559 +28,554 @@ html, body, #app, .Home {
   transform: scale(1.5)
 }
 
+.background {
+  opacity: 1;
+  transition: opacity 3s;
+}
+
+.background-dark {
+  opacity: 0.7;
+  transition: opacity 3s;
+}
+
 .shape {
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
 
 // Transition from night to sunrise
-
+//
 .transition1-1 {
   fill: #000079;
-  animation-name: transition1-1;
 }
-
-@keyframes transition1-1 {
-  0% {fill: #000079;}
-  100% {fill: #490099;}
-}
-
+//
+// @keyframes transition1-1 {
+//   0% {fill: #000079;}
+//   100% {fill: #490099;}
+// }
+//
 .transition1-2 {
   fill: #2212D7;
-  animation-name: transition1-2;
 }
-
-@keyframes transition1-2 {
-  0% {fill: #2212D7;}
-  100% {fill: #C02C71;}
-}
-
+//
+// @keyframes transition1-2 {
+//   0% {fill: #2212D7;}
+//   100% {fill: #C02C71;}
+// }
+//
 .transition1-3 {
   fill: #007273;
-  animation-name: transition1-3;
 }
-
-@keyframes transition1-3 {
-  0% {fill: #007273;}
-  100% {fill: #D54A10;}
-}
-
-.transition1-4 {
-  fill: #00D6D7;
-  animation-name: transition1-4;
-}
-
-@keyframes transition1-4 {
-  0% {fill: #00D6D7;}
-  100% {fill: #F0A826;}
-}
-
-.transition1-5 {
-  fill: #2212D7;
-  animation-name: transition1-5;
-}
-
-@keyframes transition1-5 {
-  0% {fill: #2212D7;}
-  100% {fill: #C02C71;}
-}
-
-.transition1-6 {
-  fill: #007273;
-  animation-name: transition1-6;
-}
-
-@keyframes transition1-6 {
-  0% {fill: #007273;}
-  100% {fill: #D54A10;}
-}
-
-// Transition from Sunrise to Daytime
-
+//
+// @keyframes transition1-3 {
+//   0% {fill: #007273;}
+//   100% {fill: #D54A10;}
+// }
+//
+// .transition1-4 {
+//   fill: #00D6D7;
+//   animation-name: transition1-4;
+// }
+//
+// @keyframes transition1-4 {
+//   0% {fill: #00D6D7;}
+//   100% {fill: #F0A826;}
+// }
+//
+// .transition1-5 {
+//   fill: #2212D7;
+//   animation-name: transition1-5;
+// }
+//
+// @keyframes transition1-5 {
+//   0% {fill: #2212D7;}
+//   100% {fill: #C02C71;}
+// }
+//
+// .transition1-6 {
+//   fill: #007273;
+//   animation-name: transition1-6;
+// }
+//
+// @keyframes transition1-6 {
+//   0% {fill: #007273;}
+//   100% {fill: #D54A10;}
+// }
+//
+// // Transition from Sunrise to Daytime
+//
 .transition2-1 {
   fill: #490099;
-  animation-name: transition2-1;
 }
-
-@keyframes transition2-1 {
-  0% {fill: #490099;}
-  100% {fill: #0043B0;}
-}
-
+//
+// @keyframes transition2-1 {
+//   0% {fill: #490099;}
+//   100% {fill: #0043B0;}
+// }
+//
 .transition2-2 {
   fill: #C02C71;
-  animation-name: transition2-2;
 }
-
-@keyframes transition2-2 {
-  0% {fill: #C02C71;}
-  100% {fill: #0D85BE;}
-}
-
+//
+// @keyframes transition2-2 {
+//   0% {fill: #C02C71;}
+//   100% {fill: #0D85BE;}
+// }
+//
 .transition2-3 {
   fill: #D54A10;
-  animation-name: transition2-3;
 }
-
-@keyframes transition2-3 {
-  0% {fill: #D54A10;}
-  100% {fill: #E6C522;}
-}
-
+//
+// @keyframes transition2-3 {
+//   0% {fill: #D54A10;}
+//   100% {fill: #E6C522;}
+// }
+//
 .transition2-4 {
   fill: #F0A826;
-  animation-name: transition2-4;
 }
-
-@keyframes transition2-4 {
-  0% {fill: #F0A826;}
-  100% {fill: #E78F00;}
-}
-
+//
+// @keyframes transition2-4 {
+//   0% {fill: #F0A826;}
+//   100% {fill: #E78F00;}
+// }
+//
 .transition2-5 {
   fill: #C02C71;
-  animation-name: transition2-5;
 }
-
-@keyframes transition2-5 {
-  0% {fill: #C02C71;}
-  100% {fill: #0D85BE;}
-}
-
+//
+// @keyframes transition2-5 {
+//   0% {fill: #C02C71;}
+//   100% {fill: #0D85BE;}
+// }
+//
 .transition2-6 {
   fill: #D54A10;
-  animation-name: transition2-6;
 }
-
-@keyframes transition2-6 {
-  0% {fill: #D54A10;}
-  100% {fill: #E6C522;}
-}
-
-// Transition from Daytime to Sunset
-
-.transition3-1 {
-  fill: #0043B0;
-  animation-name: transition3-1;
-}
-
-@keyframes transition3-1 {
-  0% {fill: #0043B0;}
-  100% {fill: #0000CA;}
-}
-
-.transition3-2 {
-  fill: #0D85BE;
-  animation-name: transition3-2;
-}
-
-@keyframes transition3-2 {
-  0% {fill: #0D85BE;}
-  100% {fill: #1E49DE;}
-}
-
-.transition3-3 {
-  fill: #E6C522;
-  animation-name: transition3-3;
-}
-
-@keyframes transition3-3 {
-  0% {fill: #E6C522;}
-  100% {fill: #E96C00;}
-}
-
-.transition3-4 {
-  fill: #E78F00;
-  animation-name: transition3-4;
-}
-
-@keyframes transition3-4 {
-  0% {fill: #E78F00;}
-  100% {fill: #EBD056;}
-}
-
-.transition3-5 {
-  fill: #0D85BE;
-  animation-name: transition3-5;
-}
-
-@keyframes transition3-5 {
-  0% {fill: #0D85BE;}
-  100% {fill: #1E49DE;}
-}
-
-.transition3-6 {
-  fill: #E6C522;
-  animation-name: transition3-6;
-}
-
-@keyframes transition3-6 {
-  0% {fill: #E6C522;}
-  100% {fill: #E96C00;}
-}
-
-// Transition from Sunset to Night
-
-.transition4-1 {
-  fill: #0000CA;
-  animation-name: transition4-1;
-}
-
-@keyframes transition4-1 {
-  0% {fill: #0000CA;}
-  100% {fill: #000079;}
-}
-
-.transition4-2 {
-  fill: #1E49DE;
-  animation-name: transition4-2;
-}
-
-@keyframes transition4-2 {
-  0% {fill: #1E49DE;}
-  100% {fill: #2212D7;}
-}
-
-.transition4-3 {
-  fill: #E96C00;
-  animation-name: transition4-3;
-}
-
-@keyframes transition4-3 {
-  0% {fill: #E96C00;}
-  100% {fill: #007273;}
-}
-
-.transition4-4 {
-  fill: #EBD056;
-  animation-name: transition4-4;
-}
-
-@keyframes transition4-4 {
-  0% {fill: #EBD056;}
-  100% {fill: #00D6D7;}
-}
-
-.transition4-5 {
-  fill: #1E49DE;
-  animation-name: transition4-5;
-}
-
-@keyframes transition4-5 {
-  0% {fill: #1E49DE;}
-  100% {fill: #2212D7;}
-}
-
-.transition4-6 {
-  fill: #E96C00;
-  animation-name: transition4-6;
-}
-
-@keyframes transition4-6 {
-  0% {fill: #E96C00;}
-  100% {fill: #007273;}
-}
-
-// sunrise animations
-
-.sunrise1 {
-  fill: #4E00A3;
-  animation-name: sunrise1;
-}
-
-@keyframes sunrise1 {
-  0% {fill: #4E00A3;}
-  50% {fill: #300063;}
-  100% {fill: #4E00A3;}
-}
-
-.sunrise2 {
-  fill: #C92E77;
-  animation-name: sunrise2;
-}
-
-@keyframes sunrise2 {
-  0% {fill: #C92E77;}
-  50% {fill: #D47211;}
-  100% {fill: #C92E77;}
-}
-
-.sunrise3 {
-  fill: #E75012;
-  animation-name: sunrise3;
-}
-
-@keyframes sunrise3 {
-  0% {fill: #E75012;}
-  50% {fill: #F14D37;}
-  100% {fill: #E75012;}
-}
-
-.sunrise4 {
-  fill: #FCB028;
-  animation-name: sunrise4;
-}
-
-@keyframes sunrise4 {
-    0% {fill: #FCB028;}
-    50% {fill: #AA6D00;}
-    100% {fill: #FCB028;}
-}
-
-.sunrise5 {
-  fill: #C92E77;
-  animation-name: sunrise5;
-}
-
-@keyframes sunrise5 {
-  0% {fill: #C92E77;}
-  50% {
-    fill: #D47211;
-    ry: 20%;
-    rx: 20%
-  }
-  100% {fill: #C92E77;}
-}
-
-.sunrise6 {
-  fill: #E75012;
-  animation-name: sunrise6;
-}
-
-@keyframes sunrise6 {
-  0% {fill: #E75012;}
-  50% {
-    fill: #F14D37;
-    ry: 20%;
-    rx: 20%;
-  }
-  100% {fill: #E75012;}
-}
-
-// daytime animations
-
+//
+// @keyframes transition2-6 {
+//   0% {fill: #D54A10;}
+//   100% {fill: #E6C522;}
+// }
+//
+// // Transition from Daytime to Sunset
+//
+// .transition3-1 {
+//   fill: #0043B0;
+//   animation-name: transition3-1;
+// }
+//
+// @keyframes transition3-1 {
+//   0% {fill: #0043B0;}
+//   100% {fill: #0000CA;}
+// }
+//
+// .transition3-2 {
+//   fill: #0D85BE;
+//   animation-name: transition3-2;
+// }
+//
+// @keyframes transition3-2 {
+//   0% {fill: #0D85BE;}
+//   100% {fill: #1E49DE;}
+// }
+//
+// .transition3-3 {
+//   fill: #E6C522;
+//   animation-name: transition3-3;
+// }
+//
+// @keyframes transition3-3 {
+//   0% {fill: #E6C522;}
+//   100% {fill: #E96C00;}
+// }
+//
+// .transition3-4 {
+//   fill: #E78F00;
+//   animation-name: transition3-4;
+// }
+//
+// @keyframes transition3-4 {
+//   0% {fill: #E78F00;}
+//   100% {fill: #EBD056;}
+// }
+//
+// .transition3-5 {
+//   fill: #0D85BE;
+//   animation-name: transition3-5;
+// }
+//
+// @keyframes transition3-5 {
+//   0% {fill: #0D85BE;}
+//   100% {fill: #1E49DE;}
+// }
+//
+// .transition3-6 {
+//   fill: #E6C522;
+//   animation-name: transition3-6;
+// }
+//
+// @keyframes transition3-6 {
+//   0% {fill: #E6C522;}
+//   100% {fill: #E96C00;}
+// }
+//
+// // Transition from Sunset to Night
+//
+// .transition4-1 {
+//   fill: #0000CA;
+//   animation-name: transition4-1;
+// }
+//
+// @keyframes transition4-1 {
+//   0% {fill: #0000CA;}
+//   100% {fill: #000079;}
+// }
+//
+// .transition4-2 {
+//   fill: #1E49DE;
+//   animation-name: transition4-2;
+// }
+//
+// @keyframes transition4-2 {
+//   0% {fill: #1E49DE;}
+//   100% {fill: #2212D7;}
+// }
+//
+// .transition4-3 {
+//   fill: #E96C00;
+//   animation-name: transition4-3;
+// }
+//
+// @keyframes transition4-3 {
+//   0% {fill: #E96C00;}
+//   100% {fill: #007273;}
+// }
+//
+// .transition4-4 {
+//   fill: #EBD056;
+//   animation-name: transition4-4;
+// }
+//
+// @keyframes transition4-4 {
+//   0% {fill: #EBD056;}
+//   100% {fill: #00D6D7;}
+// }
+//
+// .transition4-5 {
+//   fill: #1E49DE;
+//   animation-name: transition4-5;
+// }
+//
+// @keyframes transition4-5 {
+//   0% {fill: #1E49DE;}
+//   100% {fill: #2212D7;}
+// }
+//
+// .transition4-6 {
+//   fill: #E96C00;
+//   animation-name: transition4-6;
+// }
+//
+// @keyframes transition4-6 {
+//   0% {fill: #E96C00;}
+//   100% {fill: #007273;}
+// }
+//
+// // sunrise animations
+//
+// .sunrise1 {
+//   fill: #4E00A3;
+//   animation-name: sunrise1;
+// }
+//
+// @keyframes sunrise1 {
+//   0% {fill: #4E00A3;}
+//   50% {fill: #300063;}
+//   100% {fill: #4E00A3;}
+// }
+//
+// .sunrise2 {
+//   fill: #C92E77;
+//   animation-name: sunrise2;
+// }
+//
+// @keyframes sunrise2 {
+//   0% {fill: #C92E77;}
+//   50% {fill: #D47211;}
+//   100% {fill: #C92E77;}
+// }
+//
+// .sunrise3 {
+//   fill: #E75012;
+//   animation-name: sunrise3;
+// }
+//
+// @keyframes sunrise3 {
+//   0% {fill: #E75012;}
+//   50% {fill: #F14D37;}
+//   100% {fill: #E75012;}
+// }
+//
+// .sunrise4 {
+//   fill: #FCB028;
+//   animation-name: sunrise4;
+// }
+//
+// @keyframes sunrise4 {
+//     0% {fill: #FCB028;}
+//     50% {fill: #AA6D00;}
+//     100% {fill: #FCB028;}
+// }
+//
+// .sunrise5 {
+//   fill: #C92E77;
+//   animation-name: sunrise5;
+// }
+//
+// @keyframes sunrise5 {
+//   0% {fill: #C92E77;}
+//   50% {
+//     fill: #D47211;
+//     ry: 20%;
+//     rx: 20%
+//   }
+//   100% {fill: #C92E77;}
+// }
+//
+// .sunrise6 {
+//   fill: #E75012;
+//   animation-name: sunrise6;
+// }
+//
+// @keyframes sunrise6 {
+//   0% {fill: #E75012;}
+//   50% {
+//     fill: #F14D37;
+//     ry: 20%;
+//     rx: 20%;
+//   }
+//   100% {fill: #E75012;}
+// }
+//
+// // daytime animations
+//
 .daytime1 {
   fill: #0043B0;
-  animation-name: daytime1;
 }
-
-@keyframes daytime1 {
-  0% {fill: #0043B0;}
-  50% {fill: #1021A4;}
-  100% {fill: #0043B0;}
-}
-
+//
+// @keyframes daytime1 {
+//   0% {fill: #0043B0;}
+//   50% {fill: #1021A4;}
+//   100% {fill: #0043B0;}
+// }
+//
 .daytime2 {
   fill: #0D85BE;
-  animation-name: daytime2;
 }
-
-@keyframes daytime2 {
-  0% {fill: #0D85BE;}
-  50% {fill: #3294C4;}
-  100% {fill: #0D85BE;}
-}
-
+//
+// @keyframes daytime2 {
+//   0% {fill: #0D85BE;}
+//   50% {fill: #3294C4;}
+//   100% {fill: #0D85BE;}
+// }
+//
 .daytime3 {
   fill: #E6C522;
-  animation-name: daytime3;
 }
-
-@keyframes daytime3 {
-  0% {fill: #E6C522;}
-  50% {fill: #F1F34D;}
-  100% {fill: #E6C522;}
-}
-
+//
+// @keyframes daytime3 {
+//   0% {fill: #E6C522;}
+//   50% {fill: #F1F34D;}
+//   100% {fill: #E6C522;}
+// }
+//
 .daytime4 {
   fill: #E78F00;
-  animation-name: daytime4;
 }
-
-@keyframes daytime4 {
-  0% {fill: #E78F00;}
-  50% {fill: #903600;}
-  100% {fill: #E78F00;}
-}
-
+//
+// @keyframes daytime4 {
+//   0% {fill: #E78F00;}
+//   50% {fill: #903600;}
+//   100% {fill: #E78F00;}
+// }
+//
 .daytime5 {
   fill: #0D85BE;
-  animation-name: daytime5;
 }
-
-@keyframes daytime5 {
-  0% {fill: #0D85BE;}
-  50% {
-    fill: #3294C4;
-    ry: 20%;
-    rx: 20%
-  }
-  100% {fill: #0D85BE;}
-}
-
+//
+// @keyframes daytime5 {
+//   0% {fill: #0D85BE;}
+//   50% {
+//     fill: #3294C4;
+//     ry: 20%;
+//     rx: 20%
+//   }
+//   100% {fill: #0D85BE;}
+// }
+//
 .daytime6 {
   fill: #E6C522;
-  animation-name: daytime6;
 }
-
-@keyframes daytime6 {
-  0% {fill: #E6C522;}
-  50% {
-    fill: #F1F34D;
-    ry: 20%;
-    rx: 20%;
-  }
-  100% {fill: #E6C522;}
-}
-
-// dusk animations
-
-.dusk1 {
-  fill: #0000C6;
-  animation-name: dusk1;
-}
-
-@keyframes dusk1 {
-  0% {fill: #0000C6;}
-  50% {fill: #582AC9;}
-  100% {fill: #0000C6;}
-}
-
-.dusk2 {
-  fill: #1E4AE0;
-  animation-name: dusk2;
-}
-
-@keyframes dusk2 {
-  0% {fill: #1E4AE0;}
-  50% {fill: #310896;}
-  100% {fill: #1E4AE0;}
-}
-
-.dusk3 {
-  fill: #E96C00;
-  animation-name: dusk3;
-}
-
-@keyframes dusk3 {
-  0% {fill: #E96C00;}
-  50% {fill: #BB5600;}
-  100% {fill: #E96C00;}
-}
-
-.dusk4 {
-  fill: #E8CE55;
-  animation-name: dusk4;
-}
-
-@keyframes dusk4 {
-  0% {fill: #E8CE55;}
-  50% {fill: #F5BA43;}
-  100% {fill: #E8CE55;}
-}
-
-.dusk5 {
-  fill: #1E4AE0;
-  animation-name: dusk5;
-}
-
-@keyframes dusk5 {
-  0% {fill: #1E4AE0;}
-  50% {
-    fill: #310896;
-    ry: 20%;
-    rx: 20%
-  }
-  100% {fill: #1E4AE0;}
-}
-
-.dusk6 {
-  fill: #E96C00;
-  animation-name: dusk6;
-}
-
-@keyframes dusk6 {
-  0% {fill: #E96C00;}
-  50% {
-    fill: #BB5600;
-    ry: 20%;
-    rx: 20%;
-  }
-  100% {fill: #E96C00;}
-}
-
-// night animations
-
-.night1 {
-  fill: #000079;
-  animation-name: night1;
-}
-
-@keyframes night1 {
-  0% {fill: #00005A;}
-  50% {fill: #170035;}
-  100% {fill: #00005A;}
-}
-
-.night2 {
-  fill: #2212D7;
-  animation-name: night2;
-}
-
-@keyframes night2 {
-  0% {fill: #2212D7;}
-  50% {fill: #250057;}
-  100% {fill: #2212D7;}
-}
-
-.night3 {
-  fill: #007374;
-  animation-name: night3;
-}
-
-@keyframes night3 {
-  0% {fill: #007374;}
-  50% {fill: #079292;}
-  100% {fill: #007374;}
-}
-
-.night4 {
-  fill: #00D6D7;
-  animation-name: night4;
-}
-
-@keyframes night4 {
-    0% {fill: #00D6D7;}
-    50% {fill: #48ADAD;}
-    100% {fill: #00D6D7;}
-}
-
-.night5 {
-  fill: #2212D7;
-  animation-name: night5;
-}
-
-@keyframes night5 {
-  0% {fill: #2212D7;}
-  50% {
-    fill: #250057;
-    ry: 20%;
-    rx: 20%;
-  }
-  100% {fill: #2212D7;}
-}
-
-.night6 {
-  fill: #007374;
-  animation-name: night6;
-}
-
-@keyframes night6 {
-  0% {fill: #007374;}
-  50% {
-    fill: #079292;
-    ry: 20%;
-    rx: 20%;
-  }
-  100% {fill: #007374;}
-}
+//
+// @keyframes daytime6 {
+//   0% {fill: #E6C522;}
+//   50% {
+//     fill: #F1F34D;
+//     ry: 20%;
+//     rx: 20%;
+//   }
+//   100% {fill: #E6C522;}
+// }
+//
+// // dusk animations
+//
+// .dusk1 {
+//   fill: #0000C6;
+//   animation-name: dusk1;
+// }
+//
+// @keyframes dusk1 {
+//   0% {fill: #0000C6;}
+//   50% {fill: #582AC9;}
+//   100% {fill: #0000C6;}
+// }
+//
+// .dusk2 {
+//   fill: #1E4AE0;
+//   animation-name: dusk2;
+// }
+//
+// @keyframes dusk2 {
+//   0% {fill: #1E4AE0;}
+//   50% {fill: #310896;}
+//   100% {fill: #1E4AE0;}
+// }
+//
+// .dusk3 {
+//   fill: #E96C00;
+//   animation-name: dusk3;
+// }
+//
+// @keyframes dusk3 {
+//   0% {fill: #E96C00;}
+//   50% {fill: #BB5600;}
+//   100% {fill: #E96C00;}
+// }
+//
+// .dusk4 {
+//   fill: #E8CE55;
+//   animation-name: dusk4;
+// }
+//
+// @keyframes dusk4 {
+//   0% {fill: #E8CE55;}
+//   50% {fill: #F5BA43;}
+//   100% {fill: #E8CE55;}
+// }
+//
+// .dusk5 {
+//   fill: #1E4AE0;
+//   animation-name: dusk5;
+// }
+//
+// @keyframes dusk5 {
+//   0% {fill: #1E4AE0;}
+//   50% {
+//     fill: #310896;
+//     ry: 20%;
+//     rx: 20%
+//   }
+//   100% {fill: #1E4AE0;}
+// }
+//
+// .dusk6 {
+//   fill: #E96C00;
+//   animation-name: dusk6;
+// }
+//
+// @keyframes dusk6 {
+//   0% {fill: #E96C00;}
+//   50% {
+//     fill: #BB5600;
+//     ry: 20%;
+//     rx: 20%;
+//   }
+//   100% {fill: #E96C00;}
+// }
+//
+// // night animations
+//
+// .night1 {
+//   fill: #000079;
+//   animation-name: night1;
+// }
+//
+// @keyframes night1 {
+//   0% {fill: #00005A;}
+//   50% {fill: #170035;}
+//   100% {fill: #00005A;}
+// }
+//
+// .night2 {
+//   fill: #2212D7;
+//   animation-name: night2;
+// }
+//
+// @keyframes night2 {
+//   0% {fill: #2212D7;}
+//   50% {fill: #250057;}
+//   100% {fill: #2212D7;}
+// }
+//
+// .night3 {
+//   fill: #007374;
+//   animation-name: night3;
+// }
+//
+// @keyframes night3 {
+//   0% {fill: #007374;}
+//   50% {fill: #079292;}
+//   100% {fill: #007374;}
+// }
+//
+// .night4 {
+//   fill: #00D6D7;
+//   animation-name: night4;
+// }
+//
+// @keyframes night4 {
+//     0% {fill: #00D6D7;}
+//     50% {fill: #48ADAD;}
+//     100% {fill: #00D6D7;}
+// }
+//
+// .night5 {
+//   fill: #2212D7;
+//   animation-name: night5;
+// }
+//
+// @keyframes night5 {
+//   0% {fill: #2212D7;}
+//   50% {
+//     fill: #250057;
+//     ry: 20%;
+//     rx: 20%;
+//   }
+//   100% {fill: #2212D7;}
+// }
+//
+// .night6 {
+//   fill: #007374;
+//   animation-name: night6;
+// }
+//
+// @keyframes night6 {
+//   0% {fill: #007374;}
+//   50% {
+//     fill: #079292;
+//     ry: 20%;
+//     rx: 20%;
+//   }
+//   100% {fill: #007374;}
+// }

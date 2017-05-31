@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import getSanFranciscoWeather from '/imports/api/weather';
 import classNames from 'classnames';
@@ -19,14 +20,16 @@ class DataDisplay extends React.Component {
   componentDidMount() {
     this.handleTime(true);
     this.incrementTime();
-    getSanFranciscoWeather()
-      .then(res => {
+    Meteor.call('weather.getSanFrancisco', (error, res) => {
+      if (!error) {
         this.setState({
           weather: res.data.weather[0].description,
           tempFahrenheit: Math.round(res.data.main.temp * 9/5 - 459.67),
           tempCelsius: Math.round(res.data.main.temp - 273.15)});
-      })
-      .catch(err => console.error(err));
+      } else {
+        console.log(error);
+      }
+    });
   }
 
   incrementTime() {

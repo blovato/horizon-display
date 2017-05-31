@@ -5,8 +5,8 @@ import './userCountCircle.less';
 class UserCountCircle extends React.Component {
   render () {
     const count = 2000;
-    // const size = Math.round(Math.pow(this.props.count, 2) / 10000);
-    const size = 400;
+    const size = Math.round(Math.pow(this.props.count, 2) / 10000);
+    // const size = 400;
     const containerSize = size * 2;
 
     return (

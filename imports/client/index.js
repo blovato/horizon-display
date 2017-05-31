@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import classNames from 'classnames';
 import DisplayData from './dataDisplay/dataDisplay';
-import UserCountCircle from './userCountCircle/userCountCircle.container';
+import UserCountFlock from './userCountFlock';
 import './index.less';
 
 class MainPage extends React.Component {
@@ -14,8 +14,19 @@ class MainPage extends React.Component {
       shape3: '',
       shape4: '',
       shape5: '',
-      shape6: ''};
+      shape6: '',
+      background: 'background-dark'};
     this.colorTransition = this.colorTransition.bind(this);
+    this.backgroundAnimation();
+  }
+
+  backgroundAnimation() {
+    if (this.state.background === 'background-dark') {
+      this.setState({background: 'background'});
+    } else {
+      this.setState({background: 'background-dark'});
+    }
+    setTimeout(() => this.backgroundAnimation(), 3000);
   }
 
   colorTransition(hour, initialize = false) {
@@ -60,7 +71,7 @@ class MainPage extends React.Component {
     console.log();
     return (
       <div className={classNames('Home', 'foo', 'bar')} >
-        <svg className={'background'}>
+        <svg className={this.state.background}>
           <rect className={classNames('shape', this.state.shape1)} x='0%' y='-50%' width='100%' height='95%'/>
           <rect className={classNames('shape', this.state.shape2)} x='0' y='35%' width='100%' height='35%'/>
           <ellipse className={classNames('shape', this.state.shape5)} cx='65%' cy='40%' rx='17%' ry='12%'/>
@@ -69,7 +80,7 @@ class MainPage extends React.Component {
           <rect className={classNames('shape', this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
         </svg>
         <DisplayData colorTransition={this.colorTransition} />
-        <UserCountCircle />
+        <UserCountFlock />
       </div>
     );
   }
