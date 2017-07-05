@@ -2,7 +2,6 @@ html, body, #app, .Home {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background-color: #000000;
 }
 
 .Home {
@@ -10,38 +9,86 @@ html, body, #app, .Home {
   flex-direction: column;
 }
 
-#flock {
-  position: absolute;
-}
-
-.background, .background-dark {
+.background {
   position: absolute;
   align-self: center;
   align-self: center;
   height: 100%;
   width: 150%;
-  filter: blur(80px);
-  -webkit-filter: blur(80px);
-  -moz-filter: blur(80px);
-  -o-filter: blur(80px);
-  -ms-filter: blur(80px);
+  // filter: blur(80px);
+  // -webkit-filter: blur(80px);
+  // -moz-filter: blur(80px);
+  // -o-filter: blur(80px);
+  // -ms-filter: blur(80px);
   transform: scale(1.5)
 }
 
-.background {
+.shape, .oval {
   opacity: 1;
-  transition: opacity 3s;
+  transition: transform 6s, opacity 2s linear;
 }
 
-.background-dark {
+.shape.dark {
   opacity: 0.7;
-  transition: opacity 3s;
 }
 
-.shape {
-  animation-duration: 15s;
-  animation-iteration-count: infinite;
+.oval.dark {
+  opacity: 0.7;
+  // transform: translate(-500px);
+
 }
+
+.background1 {
+  background-image: url(http://res.cloudinary.com/dfmvfna21/image/upload/v1499287377/582ac9_Sunset_070517_p1dhgs.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  position:absolute;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  transform: scale(3);
+}
+
+.background2 {
+  background-image: url(http://res.cloudinary.com/dfmvfna21/image/upload/v1499287376/310896_Sunset_070517_lzh9vv.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  position: absolute;
+  height: 195%;
+  width: 100%;
+  z-index: 2;
+  bottom: 0;
+}
+
+.background3 {
+  background-image: url(http://res.cloudinary.com/dfmvfna21/image/upload/v1499287377/bb5600_Sunset_070517_yjwo3t.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  position: absolute;
+  height: 180%;
+  width: 123%;
+  z-index: 3;
+  bottom: 0;
+  transform: scale(1.2);
+}
+
+.background4 {
+  background-image: url(http://res.cloudinary.com/dfmvfna21/image/upload/v1499287379/F5ba43_Sunset_070517_bsbymy.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  position: absolute;
+  height: 125%;
+  width: 100%;
+  z-index: 4;
+  bottom: 0;
+  display: none;
+}
+
+
+// .shape {
+//   animation-duration: 15s;
+//   animation-iteration-count: infinite;
+// }
 
 // Transition from night to sunrise
 //
@@ -72,30 +119,27 @@ html, body, #app, .Home {
 //   100% {fill: #D54A10;}
 // }
 //
-// .transition1-4 {
-//   fill: #00D6D7;
-//   animation-name: transition1-4;
-// }
+.transition1-4 {
+  fill: #00D6D7;
+}
 //
 // @keyframes transition1-4 {
 //   0% {fill: #00D6D7;}
 //   100% {fill: #F0A826;}
 // }
 //
-// .transition1-5 {
-//   fill: #2212D7;
-//   animation-name: transition1-5;
-// }
+.transition1-5 {
+  fill: #2212D7;
+}
 //
 // @keyframes transition1-5 {
 //   0% {fill: #2212D7;}
 //   100% {fill: #C02C71;}
 // }
 //
-// .transition1-6 {
-//   fill: #007273;
-//   animation-name: transition1-6;
-// }
+.transition1-6 {
+  fill: #007273;
+}
 //
 // @keyframes transition1-6 {
 //   0% {fill: #007273;}
@@ -160,60 +204,54 @@ html, body, #app, .Home {
 //
 // // Transition from Daytime to Sunset
 //
-// .transition3-1 {
-//   fill: #0043B0;
-//   animation-name: transition3-1;
-// }
+.transition3-1 {
+  fill: #0043B0;
+}
 //
 // @keyframes transition3-1 {
 //   0% {fill: #0043B0;}
 //   100% {fill: #0000CA;}
 // }
 //
-// .transition3-2 {
-//   fill: #0D85BE;
-//   animation-name: transition3-2;
-// }
+.transition3-2 {
+  fill: #0D85BE;
+}
 //
 // @keyframes transition3-2 {
 //   0% {fill: #0D85BE;}
 //   100% {fill: #1E49DE;}
 // }
 //
-// .transition3-3 {
-//   fill: #E6C522;
-//   animation-name: transition3-3;
-// }
+.transition3-3 {
+  fill: #E6C522;
+}
 //
 // @keyframes transition3-3 {
 //   0% {fill: #E6C522;}
 //   100% {fill: #E96C00;}
 // }
 //
-// .transition3-4 {
-//   fill: #E78F00;
-//   animation-name: transition3-4;
-// }
+.transition3-4 {
+  fill: #E78F00;
+}
 //
 // @keyframes transition3-4 {
 //   0% {fill: #E78F00;}
 //   100% {fill: #EBD056;}
 // }
 //
-// .transition3-5 {
-//   fill: #0D85BE;
-//   animation-name: transition3-5;
-// }
+.transition3-5 {
+  fill: #0D85BE;
+}
 //
 // @keyframes transition3-5 {
 //   0% {fill: #0D85BE;}
 //   100% {fill: #1E49DE;}
 // }
 //
-// .transition3-6 {
-//   fill: #E6C522;
-//   animation-name: transition3-6;
-// }
+.transition3-6 {
+  fill: #E6C522;
+}
 //
 // @keyframes transition3-6 {
 //   0% {fill: #E6C522;}
@@ -222,40 +260,36 @@ html, body, #app, .Home {
 //
 // // Transition from Sunset to Night
 //
-// .transition4-1 {
-//   fill: #0000CA;
-//   animation-name: transition4-1;
-// }
+.transition4-1 {
+  fill: #0000CA;
+}
 //
 // @keyframes transition4-1 {
 //   0% {fill: #0000CA;}
 //   100% {fill: #000079;}
 // }
 //
-// .transition4-2 {
-//   fill: #1E49DE;
-//   animation-name: transition4-2;
-// }
+.transition4-2 {
+  fill: #1E49DE;
+}
 //
 // @keyframes transition4-2 {
 //   0% {fill: #1E49DE;}
 //   100% {fill: #2212D7;}
 // }
 //
-// .transition4-3 {
-//   fill: #E96C00;
-//   animation-name: transition4-3;
-// }
+.transition4-3 {
+  fill: #E96C00;
+}
 //
 // @keyframes transition4-3 {
 //   0% {fill: #E96C00;}
 //   100% {fill: #007273;}
 // }
 //
-// .transition4-4 {
-//   fill: #EBD056;
-//   animation-name: transition4-4;
-// }
+.transition4-4 {
+  fill: #EBD056;
+}
 //
 // @keyframes transition4-4 {
 //   0% {fill: #EBD056;}
@@ -360,7 +394,7 @@ html, body, #app, .Home {
 //
 // // daytime animations
 //
-.daytime1 {
+.daytime1, .daytime1-dark {
   fill: #0043B0;
 }
 //
@@ -370,7 +404,7 @@ html, body, #app, .Home {
 //   100% {fill: #0043B0;}
 // }
 //
-.daytime2 {
+.daytime2, .daytime2-dark {
   fill: #0D85BE;
 }
 //
@@ -380,7 +414,7 @@ html, body, #app, .Home {
 //   100% {fill: #0D85BE;}
 // }
 //
-.daytime3 {
+.daytime3, .daytime3-dark {
   fill: #E6C522;
 }
 //
@@ -390,7 +424,7 @@ html, body, #app, .Home {
 //   100% {fill: #E6C522;}
 // }
 //
-.daytime4 {
+.daytime4, .daytime4-dark {
   fill: #E78F00;
 }
 //
@@ -400,7 +434,7 @@ html, body, #app, .Home {
 //   100% {fill: #E78F00;}
 // }
 //
-.daytime5 {
+.daytime5, .daytime5-dark {
   fill: #0D85BE;
 }
 //
@@ -414,7 +448,7 @@ html, body, #app, .Home {
 //   100% {fill: #0D85BE;}
 // }
 //
-.daytime6 {
+.daytime6, .daytime6-dark {
   fill: #E6C522;
 }
 //

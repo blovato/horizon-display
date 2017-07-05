@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import classNames from 'classnames';
 import DisplayData from './dataDisplay/dataDisplay';
-import UserCountFlock from './userCountFlock';
+import UserCountFlock from './userCountFlock/userCountFlock.container';
 import './index.less';
 
 class MainPage extends React.Component {
@@ -15,16 +15,21 @@ class MainPage extends React.Component {
       shape4: '',
       shape5: '',
       shape6: '',
-      background: 'background-dark'};
+      shapeGroup1: 'light',
+      shapeGroup2: 'dark'};
     this.colorTransition = this.colorTransition.bind(this);
     this.backgroundAnimation();
   }
 
   backgroundAnimation() {
-    if (this.state.background === 'background-dark') {
-      this.setState({background: 'background'});
+    if (this.state.shapeGroup1 === 'light') {
+      this.setState({
+        shapeGroup1: 'dark',
+        shapeGroup2: 'light'});
     } else {
-      this.setState({background: 'background-dark'});
+      this.setState({
+        shapeGroup1: 'light',
+        shapeGroup2: 'dark'});
     }
     setTimeout(() => this.backgroundAnimation(), 3000);
   }
@@ -68,17 +73,14 @@ class MainPage extends React.Component {
   }
 
   render () {
-    console.log();
     return (
       <div className={classNames('Home', 'foo', 'bar')} >
-        <svg className={this.state.background}>
-          <rect className={classNames('shape', this.state.shape1)} x='0%' y='-50%' width='100%' height='95%'/>
-          <rect className={classNames('shape', this.state.shape2)} x='0' y='35%' width='100%' height='35%'/>
-          <ellipse className={classNames('shape', this.state.shape5)} cx='65%' cy='40%' rx='17%' ry='12%'/>
-          <rect className={classNames('shape', this.state.shape3)} x='0' y='50%' width='100%' height='25%'/>
-          <ellipse className={classNames('shape', this.state.shape6)} cx='35%' cy='55%' rx='17%' ry='12%'/>
-          <rect className={classNames('shape', this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
-        </svg>
+
+        <div className={'background1'}></div>
+        <div className={'background2'}></div>
+        <div className={'background3'}></div>
+        <div className={'background4'}></div>
+
         <DisplayData colorTransition={this.colorTransition} />
         <UserCountFlock />
       </div>
@@ -87,3 +89,12 @@ class MainPage extends React.Component {
 }
 
 export default MainPage;
+
+// <svg className={'background'}>
+//   <rect className={classNames('shape', this.state.shapeGroup1, this.state.shape1)} x='0%' y='-50%' width='100%' height='95%'/>
+//   <rect className={classNames('shape', this.state.shapeGroup2, this.state.shape2)} x='0' y='35%' width='100%' height='35%'/>
+//   <ellipse className={classNames('oval', this.state.shapeGroup2, this.state.shape5)} cx='65%' cy='40%' rx='17%' ry='12%'/>
+//   <rect className={classNames('shape', this.state.shapeGroup1, this.state.shape3)} x='0' y='50%' width='100%' height='25%'/>
+//   <ellipse className={classNames('oval', this.state.shapeGroup1, this.state.shape6)} cx='65%' cy='55%' rx='17%' ry='12%'/>
+//   <rect className={classNames('shape', this.state.shapeGroup2, this.state.shape4)} x='0' y='70%' width='100%' height='50%'/>
+// </svg>
