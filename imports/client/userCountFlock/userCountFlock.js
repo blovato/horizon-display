@@ -47,7 +47,7 @@ class UserCountFlock extends React.Component {
 
   createForce() {
     this.force = window.d3.layout.force()
-        .gravity(0.04)
+        .gravity(0.02)
         .charge(function(d, i) { return i ? 0 : -2000; })
         .nodes(this.nodes)
         .size([this.width / 1.5, this.height])
@@ -74,7 +74,7 @@ class UserCountFlock extends React.Component {
 
   addNodes() {
     var size = 5.87 * 2;
-    var flockCount = Math.floor(this.state.count / 12);
+    var flockCount = Math.floor(this.state.count / 18);
     while (this.nodes.length < flockCount + 1) {
       this.nodes.push({radius: Math.random() * 12 + size});
     }
@@ -139,7 +139,7 @@ class UserCountFlock extends React.Component {
 
   handleClick() {
     var count = this.state.count + 1;
-    if (count % 6 === 0) {
+    if (count % 18 === 0) {
       this.addNodes();
     }
     this.setState({count: count});
@@ -152,7 +152,7 @@ class UserCountFlock extends React.Component {
 
         <div className={'userIncrementer'}>
           <button onClick={() => this.handleClick()}>plus</button>
-          {this.state.count / 12}
+          {this.state.count / 18}
         </div>
 
       </div>
