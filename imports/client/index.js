@@ -25,13 +25,16 @@ class MainPage extends React.Component {
       count: 0};
 
     this.colorTransition = this.colorTransition.bind(this);
-    this.backgroundAnimation();
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.count !== this.props.count) {
       this.setState({count: newProps.count});
     }
+  }
+
+  componentDidMount() {
+    this.backgroundAnimation();
   }
 
   backgroundAnimation() {

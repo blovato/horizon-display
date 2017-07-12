@@ -126,15 +126,20 @@ class UserCountFlock extends React.Component {
 
     for (i = 1; i < n; ++i) q.visit(this.collide(this.nodes[i]));
     context.clearRect(0, 0, this.width, this.height);
-    context.fillStyle = 'rgba(255, 255, 255, ' + 0.5 + ')';
-    context.beginPath();
     for (i = 1; i < n; ++i) {
+      context.beginPath();
       d = this.nodes[i];
       // debugger
+      if (i < 50) {
+        context.fillStyle = 'rgba(255, 255, 255, ' + 0.2 + ')';
+      } else {
+        context.fillStyle = 'rgba(255, 255, 255, ' + 0.5 + ')';
+
+      }
       context.moveTo(d.x, d.y);
       context.arc(d.x, d.y, d.radius, 0, 2 * Math.PI);
+      context.fill();
     }
-    context.fill();
   }
 
   handleClick() {
@@ -150,6 +155,10 @@ class UserCountFlock extends React.Component {
       <div className={'container'}>
         <div id={'flock'}></div>
 
+        <div className={'userIncrementer'}>
+          <button onClick={() => this.handleClick()}>plus</button>
+          {this.state.count / this.props.divisor}
+        </div>
 
       </div>
     );
@@ -157,8 +166,3 @@ class UserCountFlock extends React.Component {
 }
 
 export default UserCountFlock;
-
-// <div className={'userIncrementer'}>
-//   <button onClick={() => this.handleClick()}>plus</button>
-//   {this.state.count / this.props.divisor}
-// </div>
