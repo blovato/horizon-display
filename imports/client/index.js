@@ -34,8 +34,13 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCount((_, count) => {this.setState({count: count});});
+    this.fetchUsers()
     this.backgroundAnimation();
+  }
+
+  fetchUsers() {
+    this.props.fetchCount((_, count) => {this.setState({count: count});});
+    setTimeout(() => this.fetchUsers(), 60000);
   }
 
   backgroundAnimation() {
