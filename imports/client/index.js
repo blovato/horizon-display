@@ -34,6 +34,7 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchCount((_, count) => {this.setState({count: count});});
     this.backgroundAnimation();
   }
 
@@ -88,28 +89,32 @@ class MainPage extends React.Component {
   }
 
   render () {
-    return (
-      <div className={classNames('Home', 'foo', 'bar')} >
-        <div className={this.state.background}>
-          <div className={classNames('shape', this.state.shape1)}></div>
-          <div className={classNames('shape', this.state.shape2)}></div>
-          <div className={classNames('shape', this.state.shape3)}></div>
-          <div className={classNames('shape', this.state.shape4)}></div>
+    if (this.state.count === 0) {
+      return (<p>"Loading..."</p>);
+    } else {
+      return (
+        <div className={classNames('Home', 'foo', 'bar')} >
+          <div className={this.state.background}>
+            <div className={classNames('shape', this.state.shape1)}></div>
+            <div className={classNames('shape', this.state.shape2)}></div>
+            <div className={classNames('shape', this.state.shape3)}></div>
+            <div className={classNames('shape', this.state.shape4)}></div>
+          </div>
+
+          <div className={classNames('shape', this.state.shape7)}></div>
+          <div className={classNames('shape', this.state.shape8)}></div>
+          <div className={classNames('shape', this.state.shape9)}></div>
+          <div className={classNames('shape', this.state.shape10)}></div>
+
+          <DisplayData colorTransition={this.colorTransition}
+            count={this.state.count}
+            divisor={20} />
+          <UserCountFlock
+            count={this.state.count}
+            divisor={20} />
         </div>
-
-        <div className={classNames('shape', this.state.shape7)}></div>
-        <div className={classNames('shape', this.state.shape8)}></div>
-        <div className={classNames('shape', this.state.shape9)}></div>
-        <div className={classNames('shape', this.state.shape10)}></div>
-
-        <DisplayData colorTransition={this.colorTransition}
-          count={this.state.count}
-          divisor={20} />
-        <UserCountFlock
-          count={this.state.count}
-          divisor={20} />
-      </div>
-    );
+      );
+    }
   }
 }
 

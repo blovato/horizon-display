@@ -1,4 +1,5 @@
 import Nightmare from 'nightmare';
+import { Meteor } from 'meteor/meteor';
 const { ADMIN_AUTH } = process.env;
 
 /**
@@ -17,3 +18,11 @@ export function scrapeUserCountFromAdmin() {
       return window.Counter.get('dashboard.users.countTotal');
     });
 }
+
+Meteor.methods({
+  'userCountAll'() {
+    if (Meteor.isServer) {
+      return scrapeUserCountFromAdmin().then((count) => {return count;});
+    }
+  },
+});

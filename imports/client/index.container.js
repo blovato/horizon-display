@@ -4,8 +4,7 @@ import { People } from '/imports/api/People/people.collection';
 import index from './index';
 
 export default createContainer(() => {
-  const isLoading = !Meteor.subscribe('People.count').ready();
-  const count = People.find().count();
+  const fetchCount = (cb) => Meteor.call('userCountAll', cb);
 
-  return {count: count, isLoading: isLoading};
+  return {fetchCount: fetchCount};
 }, index);

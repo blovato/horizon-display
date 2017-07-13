@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react';
 import './userCountFlock.less';
 
 class UserCountFlock extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = {count: 0, canvas: ''};
+    this.state = {canvas: ''};
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.canvas = null;
@@ -16,27 +16,11 @@ class UserCountFlock extends React.Component {
     this.createForce = this.createForce.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.count !== this.props.count) {
-      this.setState({count: newProps.count});
-      this.addNodes();
-      this.nodeProperties();
-    }
-  }
-
-  // componentDidUpdate() {
-  //   if (this.state.count === 1570) {
-  //     console.log(this.props.isLoading);
-  //     this.addNodes();
-  //   // }
-  //   } else if (this.state.count % 6 === 0) {
-  //     this.addNodes();
-  //   }
-  // }
-
   componentDidMount() {
     this.createCanvas();
     this.createForce();
+    this.addNodes();
+    this.nodeProperties();
   }
 
   createCanvas() {
@@ -74,12 +58,11 @@ class UserCountFlock extends React.Component {
 
   addNodes() {
     var size = 5.87 * 2;
-    var flockCount = Math.floor(this.state.count / this.props.divisor);
+    var flockCount = Math.floor(this.props.count / this.props.divisor);
     while (this.nodes.length < flockCount + 1) {
       this.nodes.push({radius: Math.random() * 12 + size});
     }
     this.force.resume();
-    // debugger
   }
 
   collide(node) {
@@ -88,9 +71,7 @@ class UserCountFlock extends React.Component {
         nx2 = node.x + r,
         ny1 = node.y - r,
         ny2 = node.y + r;
-        // debugger
     return function(quad, x1, y1, x2, y2) {
-      // debugger
       if (quad.point && (quad.point !== node)) {
         var x = node.x - quad.point.x,
             y = node.y - quad.point.y,
@@ -104,14 +85,12 @@ class UserCountFlock extends React.Component {
           quad.point.y += y;
         }
       }
-      // debugger
       return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
     };
   }
 
   draw() {
     var context = this.canvas.node().getContext('2d');
-    // debugger
 
     var q = window.d3.geom.quadtree(this.nodes),
         i,
@@ -129,7 +108,6 @@ class UserCountFlock extends React.Component {
     for (i = 1; i < n; ++i) {
       context.beginPath();
       d = this.nodes[i];
-      // debugger
       if (i < 50) {
         context.fillStyle = 'rgba(255, 255, 255, ' + 0.2 + ')';
       } else {
@@ -143,7 +121,7 @@ class UserCountFlock extends React.Component {
   }
 
   handleClick() {
-    var count = this.state.count + 1;
+    var count = this.props.count + 1;
     if (count % this.props.divisor === 0) {
       this.addNodes();
     }
@@ -155,10 +133,6 @@ class UserCountFlock extends React.Component {
       <div className={'container'}>
         <div id={'flock'}></div>
 
-        <div className={'userIncrementer'}>
-          <button onClick={() => this.handleClick()}>plus</button>
-          {this.state.count / this.props.divisor}
-        </div>
 
       </div>
     );
@@ -166,3 +140,8 @@ class UserCountFlock extends React.Component {
 }
 
 export default UserCountFlock;
+
+// <div className={'userIncrementer'}>
+//   <button onClick={() => this.handleClick()}>plus</button>
+//   {this.props.count / this.props.divisor}
+// </div>
