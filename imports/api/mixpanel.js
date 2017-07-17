@@ -19,10 +19,15 @@ export function scrapeUserCountFromAdmin() {
     });
 }
 
+const shopCoUserCount = 449;
+
 Meteor.methods({
   'userCountAll'() {
     if (Meteor.isServer) {
-      return scrapeUserCountFromAdmin().then((count) => {return count;});
+      return scrapeUserCountFromAdmin().then((count) => {
+        console.log(`Found ${count} users`);
+        return count - shopCoUserCount;
+      });
     }
   },
 });

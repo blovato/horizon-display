@@ -27,20 +27,24 @@ class MainPage extends React.Component {
     this.colorTransition = this.colorTransition.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.count !== this.props.count) {
-      this.setState({count: newProps.count});
+  componentWillReceiveProps({ count }) {
+    if (count !== this.props.count) {
+      this.setState({ count });
     }
   }
 
   componentDidMount() {
-    this.fetchUsers()
+    this.fetchUsers();
     this.backgroundAnimation();
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timeoutId);
+  }
+
   fetchUsers() {
-    this.props.fetchCount((_, count) => {this.setState({count: count});});
-    setTimeout(() => this.fetchUsers(), 60000);
+    this.props.fetchCount((err, count) => count > 0 && this.setState({ count }));
+    this.timeoutId = setTimeout(() => this.fetchUsers(), 60000);
   }
 
   backgroundAnimation() {
