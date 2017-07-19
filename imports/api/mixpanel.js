@@ -19,6 +19,8 @@ export function scrapeUserCountFromAdmin() {
     });
 }
 
+const shopCoUserCount = 449;
+
 export function scrapeJobCountFromAdmin() {
   return Nightmare({ maxAuthRetries: 3 })
     .authentication(...ADMIN_AUTH.split(':'))
@@ -35,7 +37,10 @@ export function scrapeJobCountFromAdmin() {
 Meteor.methods({
   'userCountAll'() {
     if (Meteor.isServer) {
-      return scrapeUserCountFromAdmin().then((count) => {return count;});
+      return scrapeUserCountFromAdmin().then((count) => {
+        console.log(`Found ${count} users`);
+        return count - shopCoUserCount;
+      });
     }
   },
   'jobCountAll'() {

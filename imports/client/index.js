@@ -28,9 +28,9 @@ class MainPage extends React.Component {
     this.colorTransition = this.colorTransition.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.count !== this.props.count) {
-      this.setState({count: newProps.count});
+  componentWillReceiveProps({ count }) {
+    if (count !== this.props.count) {
+      this.setState({ count });
     }
   }
 
@@ -38,6 +38,10 @@ class MainPage extends React.Component {
     this.fetchUsers();
     this.fetchCount();
     this.backgroundAnimation();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeoutId);
   }
 
   fetchUsers() {
@@ -127,7 +131,6 @@ class MainPage extends React.Component {
 
           <DisplayData colorTransition={this.colorTransition}
             count={this.state.count}
-            jobCount={this.state.jobCount}
             divisor={20} />
           <UserCountFlock
             count={this.state.count}
