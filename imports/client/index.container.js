@@ -5,6 +5,7 @@ import index from './index';
 
 export default createContainer(() => {
   const fetchCount = (cb) => Meteor.call('userCountAll', cb);
+  const fetchJobCount = (cb) => Meteor.call('jobCountAll', cb);
 
-  return {fetchCount: fetchCount};
+  return {fetchCount: fetchCount, fetchJobCount: fetchJobCount};
 }, index);

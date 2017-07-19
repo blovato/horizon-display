@@ -22,29 +22,32 @@ class MainPage extends React.Component {
       shape11: '',
       shape12: '',
       background: 'background-1',
-      count: 0};
+      count: 0,
+      jobCount: 0};
 
     this.colorTransition = this.colorTransition.bind(this);
   }
 
-  componentWillReceiveProps({ count }) {
-    if (count !== this.props.count) {
-      this.setState({ count });
+  componentWillReceiveProps(newProps) {
+    if (newProps.count !== this.props.count) {
+      this.setState({count: newProps.count});
     }
   }
 
   componentDidMount() {
     this.fetchUsers();
+    this.fetchCount();
     this.backgroundAnimation();
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.timeoutId);
+  fetchUsers() {
+    this.props.fetchCount((_, count) => {this.setState({count: count});});
+    setTimeout(() => this.fetchUsers(), 60000);
   }
 
-  fetchUsers() {
-    this.props.fetchCount((err, count) => count > 0 && this.setState({ count }));
-    this.timeoutId = setTimeout(() => this.fetchUsers(), 60000);
+  fetchCount() {
+    this.props.fetchJobCount((_, count) => {this.setState({jobCount: count});});
+    setTimeout(() => this.fetchCount(), 20000);
   }
 
   backgroundAnimation() {
@@ -61,13 +64,11 @@ class MainPage extends React.Component {
     if (hour === 6 ||
         (initialize && (hour >= 6 && hour< 8))) {
         this.colorTransitionSet("sunrise");
-    // } else if (hour === 8 ||
-    //     (initialize && (hour >= 8 && hour< 20))) {
-    } else if (false) {
+    } else if (hour === 8 ||
+        (initialize && (hour >= 8 && hour< 20))) {
         this.colorTransitionSet("daytime");
-    // } else if (hour === 20 ||
-    //     (initialize && (hour >= 20 && hour< 22))) {
-    } else if (true) {
+    } else if (hour === 20 ||
+        (initialize && (hour >= 20 && hour< 22))) {
         this.colorTransitionSet("dusk");
     } else if (hour === 22 ||
         (initialize && (hour >= 22 || hour < 6))) {
@@ -99,10 +100,19 @@ class MainPage extends React.Component {
 
   render () {
     if (this.state.count === 0) {
-      return (<p>"Loading..."</p>);
+      return (
+        <div className='loading'>
+          <div className="spinner">
+            <div className="double-bounce1"></div>
+            <div className="double-bounce2"></div>
+          </div>
+          <p className="loading-text">Loading...</p>
+        </div>
+      );
     } else {
       return (
         <div className={classNames('Home', 'foo', 'bar')} >
+          <p className='job-count'>{this.state.jobCount} Open Jobs</p>
           <div className={this.state.background}>
             <div className={classNames('shape', this.state.shape1)}></div>
             <div className={classNames('shape', this.state.shape2)}></div>
@@ -117,6 +127,7 @@ class MainPage extends React.Component {
 
           <DisplayData colorTransition={this.colorTransition}
             count={this.state.count}
+            jobCount={this.state.jobCount}
             divisor={20} />
           <UserCountFlock
             count={this.state.count}
