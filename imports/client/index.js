@@ -46,7 +46,13 @@ class MainPage extends React.Component {
   }
 
   fetchCount() {
-    this.props.fetchJobCount((_, count) => {this.setState({jobCount: count});});
+    this.props.fetchJobCount((error, count) => {
+      if (error) {
+        this.setState({jobCount: 0});
+      } else {
+        this.setState({jobCount: count});
+      }
+    });
     setTimeout(() => this.fetchCount(), 20000);
   }
 
