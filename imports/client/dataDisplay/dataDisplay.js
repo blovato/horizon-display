@@ -14,8 +14,7 @@ class DataDisplay extends React.Component {
       time: '',
       weather: '',
       tempCelsius: 0,
-      tempFahrenheit: 0,
-      count: 0};
+      tempFahrenheit: 0};
   }
 
   componentDidMount() {
@@ -31,12 +30,6 @@ class DataDisplay extends React.Component {
         console.log(error);
       }
     });
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.count !== this.props.count) {
-      this.setState({count: newProps.count});
-    }
   }
 
   incrementTime() {
@@ -73,10 +66,6 @@ class DataDisplay extends React.Component {
         <p className={'weather'}>{this.state.weather.toUpperCase()}</p>
         <p className={'time'}>{this.state.time}</p>
         <p className={'date'}>{this.state.date}</p>
-        <div className={'count-container'}>
-          <p className={'count'}>Total: {this.state.count}</p>
-          <div className="node-count"><p>18</p></div>
-        </div>
       </div>
     );
   }
