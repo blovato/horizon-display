@@ -9,15 +9,50 @@ html, body, #app, .Home {
   flex-direction: column;
 }
 
-.job-count {
+.user-info {
   position: absolute;
   z-index: 2000;
   right: 70px;
   top: 77px;
+}
+
+.job-count {
   margin: 0;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-  font-size: 57px;
+  font-size: 100px;
   color: white;
+}
+
+.count {
+  font-size: 40px;
+}
+
+.count-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 25px 0 0;
+  height: 40px;
+}
+
+.node-count {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.node-count > p {
+  color: white;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0;
+  font-size: 25px;
 }
 
 .background-1, .background-2 {
@@ -33,192 +68,54 @@ html, body, #app, .Home {
   opacity: 0;
 }
 
-.sunrise1, .sunrise-background-1, .daytime1, .daytime-background-1,
-.dusk1, .dusk-background-1, .night1, .night-background-1 {
-  height: 115%
-}
-
-.sunrise2, .sunrise-background-2, .daytime2, .daytime-background-2,
-.dusk2, .dusk-background-2, .night2, .night-background-2 {
-  height: 215%;
-}
-
-.sunrise3, .sunrise-background-3, .daytime3, .daytime-background-3,
-.dusk3, .dusk-background-3, .night3, .night-background-3 {
-  height: 175%;
-}
-
-.sunrise4, .sunrise-background-4, .daytime4, .daytime-background-4,
-.dusk4, .dusk-background-4, .night4, .night-background-4 {
-  height: 120%;
-}
-
-.sunrise1 {
-  background-image: url(/images/4E00A3.png);
+.sunrise {
+  background-image: url(/images/Sunrise_1.png);
   z-index: 5;
 }
 
-.sunrise-background-1 {
-  background-image: url(/images/300063.png);
+.sunrise-background {
+  background-image: url(/images/Sunrise_2.png);
   z-index: 1;
 }
 
-.sunrise2 {
-  background-image: url(/images/C92E77.png);
-  z-index: 6;
-}
-
-.sunrise-background-2 {
-  background-image: url(/images/D47211.png);
-  z-index: 2;
-}
-
-.sunrise3 {
-  background-image: url(/images/E75012.png);
-  z-index: 7;
-}
-
-.sunrise-background-3 {
-  background-image: url(/images/F14D37.png);
-  z-index: 3;
-}
-
-.sunrise4 {
-  background-image: url(/images/FCB028.png);
-  z-index: 7;
-}
-
-.sunrise-background-4 {
-  background-image: url(/images/AA6D00.png);
-  z-index: 4;
-}
-
-.daytime1 {
-  background-image: url(/images/0043B0.png);
+.daytime {
+  background-image: url(/images/Daytime_1.png);
   z-index: 5;
 }
 
-.daytime-background-1 {
-  background-image: url(/images/1021A4.png);
+.daytime-background {
+  background-image: url(/images/Daytime_2.png);
   z-index: 1;
 }
 
-.daytime2 {
-  background-image: url(/images/0D85BE.png);
-  z-index: 6;
-}
-
-.daytime-background-2 {
-  background-image: url(/images/3294C4.png);
-  z-index: 2;
-}
-
-.daytime3 {
-  background-image: url(/images/E6C522.png);
-  z-index: 7;
-}
-
-.daytime-background-3 {
-  background-image: url(/images/F1F34D.png);
-  z-index: 3;
-}
-
-.daytime4 {
-  background-image: url(/images/E78F00.png);
-  z-index: 7;
-}
-
-.daytime-background-4 {
-  background-image: url(/images/903600.png);
-  z-index: 4;
-}
-
-.dusk1 {
+.dusk {
   background-image: url(/images/0000ca.png);
   z-index: 5;
 }
 
-.dusk-background-1 {
+.dusk-background {
   background-image: url(/images/582ac9_SunsetBIG_070517.png);
   z-index: 1;
 }
 
-.dusk2 {
-  background-image: url(/images/1e49de.png);
-  z-index: 6;
-}
-
-.dusk-background-2 {
-  background-image: url(/images/310896_SunsetBIG_070517.png);
-  z-index: 2;
-}
-
-.dusk3 {
-  background-image: url(/images/e96c00.png);
-  z-index: 7;
-}
-
-.dusk-background-3 {
-  background-image: url(/images/bb5600_SunsetBIG_070517.png);
-  z-index: 3;
-}
-
-.dusk4 {
-  background-image: url(/images/ebd056.png);
-  z-index: 7;
-}
-
-.dusk-background-4 {
-  background-image: url(/images/f5ba43_SunsetBIG_070517.png);
-  z-index: 4;
-}
-
-.night1 {
-  background-image: url(/images/00005A.png);
+.night {
+  background-image: url(/images/Night_1_fill90.png);
   z-index: 5;
 }
 
-.night-background-1 {
-  background-image: url(/images/170035.png);
+.night-background {
+  background-image: url(/images/Night_2_fill90.png);
   z-index: 1;
-}
-
-.night2 {
-  background-image: url(/images/2212D7.png);
-  z-index: 6;
-}
-
-.night-background-2 {
-  background-image: url(/images/250057.png);
-  z-index: 2;
-}
-
-.night3 {
-  background-image: url(/images/007374.png);
-  z-index: 7;
-}
-
-.night-background-3 {
-  background-image: url(/images/079292.png);
-  z-index: 3;
-}
-
-.night4 {
-  background-image: url(/images/00D6D7.png);
-  z-index: 7;
-}
-
-.night-background-4 {
-  background-image: url(/images/48ADAD.png);
-  z-index: 4;
 }
 
 .shape {
   background-repeat: no-repeat;
-  background-position-x: center;
+  background-size: cover;
+  background-position: center;
   position: absolute;
   width: 100%;
-  bottom: 0;
+  height: 100%;
+  transform: scale(1.2);
 }
 
 .loading {

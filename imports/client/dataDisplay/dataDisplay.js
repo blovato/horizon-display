@@ -66,10 +66,6 @@ class DataDisplay extends React.Component {
         <p className={'weather'}>{this.state.weather.toUpperCase()}</p>
         <p className={'time'}>{this.state.time}</p>
         <p className={'date'}>{this.state.date}</p>
-        <div className={'count-container'}>
-          <p className={'count'}>Total: {this.props.count}</p>
-          <div className="node-count"><p>{this.props.divisor}</p></div>
-        </div>
       </div>
     );
   }
