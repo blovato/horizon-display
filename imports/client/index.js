@@ -35,7 +35,13 @@ class MainPage extends React.Component {
   }
 
   fetchUsers() {
-    this.props.fetchCount((_, count) => {this.setState({count: count});});
+    this.props.fetchCount((error, count) => {
+      if (error) {
+        this.setState({count: 10000});
+      } else {
+        this.setState({count: count});
+      }
+    });
     setTimeout(() => this.fetchUsers(), 60000);
   }
 
