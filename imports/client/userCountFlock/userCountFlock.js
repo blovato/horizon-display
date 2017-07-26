@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import './userCountFlock.less';
+import './userCountFlock.css';
 
 class UserCountFlock extends React.Component {
   constructor(props) {

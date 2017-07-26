@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import getSanFranciscoWeather from '/imports/api/weather';
 import classNames from 'classnames';
-import './dataDisplay.less';
+import './dataDisplay.css';
 
 class DataDisplay extends React.Component {
   constructor() {

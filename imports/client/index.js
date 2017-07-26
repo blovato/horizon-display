@@ -3,7 +3,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 import DisplayData from './dataDisplay/dataDisplay';
 import UserCountFlock from './userCountFlock/userCountFlock';
-import './index.less';
+import './index.css';
 
 class MainPage extends React.Component {
   constructor() {
