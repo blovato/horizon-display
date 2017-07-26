@@ -1,3 +1,7 @@
+@viewport {
+  min-height: 2000px;
+}
+
 html, body, #app, .Home {
   height: 100%;
   margin: 0;
