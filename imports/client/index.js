@@ -70,15 +70,15 @@ class MainPage extends React.Component {
     if (hour === 6 ||
         (initialize && (hour >= 6 && hour< 8))) {
         this.colorTransitionSet("sunrise");
-    // } else if (hour === 8 ||
-    //     (initialize && (hour >= 8 && hour< 20))) {
-    //     this.colorTransitionSet("daytime");
+    } else if (hour === 8 ||
+        (initialize && (hour >= 8 && hour< 20))) {
+        this.colorTransitionSet("daytime");
     } else if (hour === 20 ||
         (initialize && (hour >= 20 && hour< 22))) {
         this.colorTransitionSet("dusk");
-    // } else if (hour === 22 ||
-    //     (initialize && (hour >= 22 || hour < 6))) {
-    } else if (true) {
+    } else if (hour === 22 ||
+        (initialize && (hour >= 22 || hour < 6))) {
+    // } else if (true) {
         this.colorTransitionSet("night");
     }
   }
