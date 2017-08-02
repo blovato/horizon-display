@@ -3,7 +3,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 import DisplayData from './dataDisplay/dataDisplay';
 import UserCountFlock from './userCountFlock/userCountFlock';
-import './index.less';
+import './index.css';
 
 class MainPage extends React.Component {
   constructor() {
@@ -27,7 +27,8 @@ class MainPage extends React.Component {
   componentDidMount() {
     this.fetchUsers();
     this.fetchCount();
-    this.backgroundAnimation();
+    var d = new Date();
+    this.colorTransition(d.getHours(), true);
   }
 
   componentWillUnmount() {
@@ -35,19 +36,31 @@ class MainPage extends React.Component {
   }
 
   fetchUsers() {
-    this.props.fetchCount((_, count) => {this.setState({count: count});});
+    this.props.fetchCount((error, count) => {
+      if (error) {
+        this.setState({count: 10000});
+      } else {
+        this.setState({count: count});
+      }
+    });
     setTimeout(() => this.fetchUsers(), 60000);
   }
 
   fetchCount() {
-    this.props.fetchJobCount((_, count) => {this.setState({jobCount: count});});
+    this.props.fetchJobCount((error, count) => {
+      if (error) {
+        this.setState({jobCount: 0});
+      } else {
+        this.setState({jobCount: count});
+      }
+    });
     setTimeout(() => this.fetchCount(), 20000);
   }
 
   backgroundAnimation() {
     if (this.state.background === 'background-1') {
       this.setState({ background: 'background-2' });
-    } else {
+    } else if (this.state.background === 'background-2') {
       this.setState({ background: 'background-1' });
     }
 
@@ -55,26 +68,42 @@ class MainPage extends React.Component {
   }
 
   colorTransition(hour, initialize = false) {
-    if (hour === 6 ||
-        (initialize && (hour >= 6 && hour< 8))) {
-        this.colorTransitionSet("sunrise");
-    // } else if (hour === 8 ||
-    //     (initialize && (hour >= 8 && hour< 20))) {
-    //     this.colorTransitionSet("daytime");
-    } else if (hour === 20 ||
-        (initialize && (hour >= 20 && hour< 22))) {
-        this.colorTransitionSet("dusk");
-    // } else if (hour === 22 ||
-    //     (initialize && (hour >= 22 || hour < 6))) {
-    } else if (true) {
-        this.colorTransitionSet("night");
+    if (initialize) {
+      this.colorTransitionSet(this.initializeTime(hour), true);
+    } else {
+      const times = {6: "sunrise", 8: "daytime", 20: "dusk", 22: "night"};
+      if (times[hour]) {
+        this.colorTransitionSet(times[hour]);
+      }
     }
   }
 
-  colorTransitionSet(timeOfDay) {
-    this.setState({ background2: `${timeOfDay}-background` });
+  initializeTime(hour) {
+    if (hour >= 6 && hour< 8) {
+      return "sunrise";
+    } else if (hour >= 8 && hour< 20) {
+      return "daytime";
+    } else if (hour >= 20 && hour< 22) {
+      return "dusk";
+    } else if (hour >= 22 || hour < 6) {
+      return "night";
+    }
+  }
 
-    setTimeout(() => this.timeOfDayColorChange(timeOfDay), 10000);
+  colorTransitionSet(timeOfDay, initialize = false) {
+    if (initialize) {
+      this.setState({ background1: `${timeOfDay}`,
+        background2: `${timeOfDay}-background`,
+        background: 'background-1'});
+    } else {
+      clearTimeout(this.timeoutId);
+      this.setState({background: 'background-1'});
+      setTimeout(() => this.setState({ background2: `${timeOfDay}-background` }), 10000);
+      setTimeout(() => this.setState({background: 'background-2'}), 1000);
+      setTimeout(() => this.setState({ background1: `${timeOfDay}` }), 10000);
+    }
+
+    setTimeout(() => this.backgroundAnimation(), 10000);
   }
 
   timeOfDayColorChange(time) {
@@ -98,7 +127,7 @@ class MainPage extends React.Component {
           <div className='user-info'>
             <p className='job-count'>{this.state.jobCount} Open Jobs</p>
             <div className={'count-container'}>
-              <p className={'count'}>Total: {this.state.count}</p>
+              <p className={'count'}>Total: {this.state.count.toLocaleString()}</p>
               <div className="node-count"><p>20</p></div>
             </div>
           </div>

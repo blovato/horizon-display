@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import getSanFranciscoWeather from '/imports/api/weather';
 import classNames from 'classnames';
-import './dataDisplay.less';
+import './dataDisplay.css';
 
 class DataDisplay extends React.Component {
   constructor() {
@@ -41,7 +41,6 @@ class DataDisplay extends React.Component {
 
     if (initialize) {
       this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
-      this.props.colorTransition(now.format('HH'), true);
     } else if (now.format('HH:mm') !== this.state.time) {
       if (now.format('HH') !== this.state.time.slice(0,2)) {
         this.props.colorTransition(now.format('HH'));

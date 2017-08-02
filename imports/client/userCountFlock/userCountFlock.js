@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import './userCountFlock.less';
+import './userCountFlock.css';
 
 class UserCountFlock extends React.Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class UserCountFlock extends React.Component {
   }
 
   addNodes() {
-    var size = 5.87 * 2;
+    var size = window.innerHeight / 150;
     var flockCount = Math.floor(this.props.count / this.props.divisor);
     while (this.nodes.length < flockCount + 1) {
       this.nodes.push({radius: Math.random() * 12 + size});
