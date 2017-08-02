@@ -41,7 +41,6 @@ class DataDisplay extends React.Component {
 
     if (initialize) {
       this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
-      this.props.colorTransition(now.format('HH'), true);
     } else if (now.format('HH:mm') !== this.state.time) {
       if (now.format('HH') !== this.state.time.slice(0,2)) {
         this.props.colorTransition(now.format('HH'));
