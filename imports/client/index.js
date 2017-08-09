@@ -81,7 +81,8 @@ class MainPage extends React.Component {
   initializeTime(hour) {
     if (hour >= 6 && hour< 8) {
       return "sunrise";
-    } else if (hour >= 8 && hour< 20) {
+    // } else if (hour >= 8 && hour< 20) {
+    } else if (true) {
       return "daytime";
     } else if (hour >= 20 && hour< 22) {
       return "dusk";
@@ -137,9 +138,7 @@ class MainPage extends React.Component {
 
           <div className={classNames('shape', this.state.background2)}></div>
 
-          <DisplayData colorTransition={this.colorTransition}
-            count={this.state.count}
-            divisor={20} />
+          <DisplayData colorTransition={this.colorTransition} />
           <UserCountFlock
             count={this.state.count}
             divisor={20} />
