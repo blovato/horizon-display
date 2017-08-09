@@ -8,7 +8,7 @@ const { ADMIN_AUTH } = process.env;
  */
 export function scrapeUserCountFromAdmin() {
   console.log('trying to scrape');
-  console.log(ADMIN_AUTH);
+  console.log('admin auth', ADMIN_AUTH);
   return Nightmare({ maxAuthRetries: 3 })
     .authentication(...ADMIN_AUTH.split(':'))
     .goto('http://ad.shop.co')
