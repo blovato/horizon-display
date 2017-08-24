@@ -8,7 +8,7 @@ const { ADMIN_AUTH } = process.env;
  */
 export function scrapeUserCountFromAdmin() {
   console.log('trying to scrape!');
-  return Nightmare({ maxAuthRetries: 3 })
+  return Nightmare({ maxAuthRetries: 3, show: true })
     .on('console', (log, msg) => {
       console.log(msg);
     })
@@ -33,7 +33,7 @@ export function scrapeUserCountFromAdmin() {
 const shopCoUserCount = 449;
 
 export function scrapeJobCountFromAdmin() {
-  return Nightmare({ maxAuthRetries: 3 })
+  return Nightmare({ maxAuthRetries: 3, show: true })
     .authentication(...ADMIN_AUTH.split(':'))
     .goto('https://parachute.shop.co')
     .evaluate(() => {
