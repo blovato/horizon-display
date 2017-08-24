@@ -9,9 +9,16 @@ const { ADMIN_AUTH } = process.env;
 export function scrapeUserCountFromAdmin() {
   console.log('trying to scrape!');
   return Nightmare({ maxAuthRetries: 3 })
+    .on('console', (log, msg) => {
+      console.log(msg);
+    })
     .authentication(...ADMIN_AUTH.split(':'))
     .goto('http://ad.shop.co')
     .evaluate(() => {
+        function test(){
+          console.log("Hello From Test.");
+        }
+        test();
       return window.Meteor.subscribe('dashboard.users.countTotal');
     })
     .wait(1000) // wait for sub to load
