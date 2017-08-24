@@ -18,7 +18,7 @@ export function scrapeUserCountFromAdmin() {
     .evaluate(() => {
       return window.Counter.get('dashboard.users.countTotal');
     })
-    .catch(function(err) {
+    .catch((err) => {
       console.log('in the catch', err.message);
     });
 }
@@ -36,7 +36,7 @@ export function scrapeJobCountFromAdmin() {
     .evaluate(() => {
       return window.Counts.get('tasks.count.new');
     })
-    .catch(function(err) {
+    .catch((err) => {
       console.log('in the catch', err.message);
     });
 }
