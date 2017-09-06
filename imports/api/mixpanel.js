@@ -33,7 +33,8 @@ export function scrapeUserCountFromAdmin() {
 const shopCoUserCount = 449;
 
 export function scrapeJobCountFromAdmin() {
-  return Nightmare({ maxAuthRetries: 3, show: true })
+  if (Meteor.isServer) {
+    return Nightmare({ maxAuthRetries: 3, show: true })
     .authentication(...ADMIN_AUTH.split(':'))
     .goto('https://parachute.shop.co')
     .evaluate(() => {
@@ -46,6 +47,7 @@ export function scrapeJobCountFromAdmin() {
     .catch((err) => {
       console.log('in the catch', err.message);
     });
+  }
 }
 
 Meteor.methods({
