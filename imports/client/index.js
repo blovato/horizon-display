@@ -25,7 +25,7 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchUsers();
+    // this.fetchUsers();
     this.fetchCount();
     var d = new Date();
     this.colorTransition(d.getHours(), true);
