@@ -8,7 +8,7 @@ const { ADMIN_AUTH } = process.env;
  */
 export function scrapeUserCountFromAdmin() {
   console.log('trying to scrape!');
-  return Nightmare({ maxAuthRetries: 3, show: true })
+  return Nightmare({ maxAuthRetries: 3, show: false })
     .on('console', (log, msg) => {
       console.log(msg);
     })
@@ -34,7 +34,7 @@ const shopCoUserCount = 449;
 
 export function scrapeJobCountFromAdmin() {
   if (Meteor.isServer) {
-    return Nightmare({ maxAuthRetries: 3, show: true })
+    return Nightmare({ maxAuthRetries: 3, show: false })
     .authentication(...ADMIN_AUTH.split(':'))
     .goto('https://parachute.shop.co')
     .evaluate(() => {

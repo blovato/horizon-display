@@ -56,7 +56,7 @@ html, body, #app, .Home {
   font-size: 2.5vh;
 }
 
-.background-1, .background-2 {
+.background-1, .background-2, .background-2-dark {
   transition: opacity 3s linear;
   opacity: 1;
   position: relative;
@@ -69,44 +69,64 @@ html, body, #app, .Home {
   opacity: 0;
 }
 
-.sunrise {
-  background-image: url(/images/Sunrise_1.png);
-  z-index: 5;
+.background-2-dark {
+  opacity: .7;
 }
 
-.sunrise-background {
-  background-image: url(/images/Sunrise_2.png);
+.foreground-img {
+  z-index: 5
+}
+
+.background-img {
   z-index: 1;
 }
 
-.daytime {
-  background-image: url(/images/Daytime_1.png);
-  z-index: 5;
+.D1 {
+  background-image: url(/images/D1.png);
 }
 
-.daytime-background {
-  background-image: url(/images/Daytime_2.png);
-  z-index: 1;
+.D2 {
+  background-image: url(/images/D2.png);
 }
 
-.dusk {
-  background-image: url(/images/0000ca.png);
-  z-index: 5;
+.D3 {
+  background-image: url(/images/D3.png);
 }
 
-.dusk-background {
-  background-image: url(/images/582ac9_SunsetBIG_070517.png);
-  z-index: 1;
+.D4 {
+  background-image: url(/images/D4.png);
 }
 
-.night {
-  background-image: url(/images/Night_1_fill90.png);
-  z-index: 5;
+.D5 {
+  background-image: url(/images/D5.png);
 }
 
-.night-background {
-  background-image: url(/images/Night_2_fill90.png);
-  z-index: 1;
+.E1 {
+  background-image: url(/images/E1.png);
+}
+
+.E2 {
+  background-image: url(/images/E2.png);
+}
+
+.E3 {
+  background-image: url(/images/E3.png);
+}
+
+.N1 {
+  background-image: url(/images/N1.png);
+}
+
+.N2 {
+  background-image: url(/images/N2.png);
+}
+
+.N3 {
+  background-image: url(/images/N3.png);
+}
+
+.N4 {
+  background-image: url(/images/N4.png);
 }
 
 .shape {

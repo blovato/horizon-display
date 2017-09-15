@@ -12,10 +12,13 @@ class MainPage extends React.Component {
     this.state = {background1: '',
       background2: '',
       background: 'background-1',
-      count: 0,
-      jobCount: 0};
+      count: 10,
+      jobCount: 0,
+      opacity: "-dark",
+      phase: 1};
 
     this.colorTransition = this.colorTransition.bind(this);
+    this.initializePhase = this.initializePhase.bind(this);
   }
 
   componentWillReceiveProps({ count }) {
@@ -27,8 +30,7 @@ class MainPage extends React.Component {
   componentDidMount() {
     // this.fetchUsers();
     this.fetchCount();
-    var d = new Date();
-    this.colorTransition(d.getHours(), true);
+    this.colorTransition(true);
   }
 
   componentWillUnmount() {
@@ -59,56 +61,114 @@ class MainPage extends React.Component {
 
   backgroundAnimation() {
     if (this.state.background === 'background-1') {
-      this.setState({ background: 'background-2' });
-    } else if (this.state.background === 'background-2') {
+      this.setState({ background: `background-2${this.state.opacity}` });
+    } else {
       this.setState({ background: 'background-1' });
     }
 
     setTimeout(() => this.backgroundAnimation(), 10000);
   }
 
-  colorTransition(hour, initialize = false) {
+  colorTransition(initialize = false) {
     if (initialize) {
-      this.colorTransitionSet(this.initializeTime(hour), true);
+      this.initializePhase();
+      // this.colorTransitionSet();
     } else {
-      const times = {6: "sunrise", 8: "daytime", 20: "dusk", 22: "night"};
-      if (times[hour]) {
-        this.colorTransitionSet(times[hour]);
-      }
+      this.changePhase();
     }
   }
 
-  initializeTime(hour) {
-    if (hour >= 6 && hour< 8) {
-      return "sunrise";
-    // } else if (hour >= 8 && hour< 20) {
-    } else if (true) {
-      return "daytime";
-    } else if (hour >= 20 && hour< 22) {
-      return "dusk";
-    } else if (hour >= 22 || hour < 6) {
-      return "night";
+  opacityChange(time) {
+    if (this.state.opacity === '') {
+      this.setState({opacity: '-dark'});
+    } else {
+      this.setState({opacity: ''});
     }
   }
 
-  colorTransitionSet(timeOfDay, initialize = false) {
+  changePhase() {
+    if (this.state.phase === 24) {
+      this.setState({phase: 1}, this.colorTransitionSet);
+    } else {
+      const num =  this.state.phase + 1;
+      this.setState({phase: num}, this.colorTransitionSet);
+    }
+  }
+
+  initializePhase() {
+    const phaseTimes = {
+      '0': 1, '2': 3, '4': 5, '6': 7, '8': 9, '10': 11, '12': 13,
+      '14': 15, '16': 17, '18': 19, '20': 21, '22': 23,
+    };
+
+    const time = new Date();
+    const hour = time.getHours();
+    const minute = Number(time.getMinutes());
+
+
+    if (phaseTimes[hour] && (minute < 30)) {
+      this.setState(
+        {phase: phaseTimes[hour], opacity: '-dark'},
+        () => this.colorTransitionSet(true)
+      );
+    } else if (phaseTimes[hour] === undefined && (minute >= 30 && minute < 60)) {
+      this.setState(
+        {phase: phaseTimes[hour - 1] + 1, opacity: '-dark'},
+        () => this.colorTransitionSet(true)
+      );
+    } else {
+      this.setState(
+        {phase: phaseTimes[hour], opacity: ''},
+        () => this.colorTransitionSet(true)
+      );
+    }
+
+  }
+
+  // initializeTime(hour) {
+  //   if (hour >= 6 && hour< 8) {
+  //     return "sunrise";
+  //   // } else if (hour >= 8 && hour< 20) {
+  //   } else if (true) {
+  //     return "daytime";
+  //   } else if (hour >= 20 && hour< 22) {
+  //     return "dusk";
+  //   } else if (hour >= 22 || hour < 6) {
+  //     return "night";
+  //   }
+  // }
+
+  colorTransitionSet(initialize = false) {
+    debugger
+    const phaseColors = {
+      1: ['N1', 'N2'], 3: ['N2', 'N3'], 5: ['N3', 'N4'],  7: ['N4', 'D1'],
+      9: ['D1', 'D2'], 11: ['D2', 'D3'], 13: ['D3', 'D4'], 15: ['D4', 'D5'],
+      17: ['D5', 'E1'], 19: ['E1', 'E2'], 21: ['E2', 'E3'], 23: ['E3', 'N1']
+    };
+    let color1;
+    let color2;
+
+    if (phaseColors[this.state.phase])  {
+      color1 = phaseColors[this.state.phase][0];
+      color2 = phaseColors[this.state.phase][1];
+    } else {
+      color1 = phaseColors[this.state.phase - 1][1];
+      color2 = phaseColors[this.state.phase - 1][0];
+    }
+
     if (initialize) {
-      this.setState({ background1: `${timeOfDay}`,
-        background2: `${timeOfDay}-background`,
+      this.setState({ background1: color1,
+        background2: color2,
         background: 'background-1'});
     } else {
       clearTimeout(this.timeoutId);
       this.setState({background: 'background-1'});
-      setTimeout(() => this.setState({ background2: `${timeOfDay}-background` }), 10000);
+      setTimeout(() => this.setState({ background2: color2 }), 10000);
       setTimeout(() => this.setState({background: 'background-2'}), 1000);
-      setTimeout(() => this.setState({ background1: `${timeOfDay}` }), 10000);
+      setTimeout(() => this.setState({ background1: color1 }), 10000);
     }
 
     setTimeout(() => this.backgroundAnimation(), 10000);
-  }
-
-  timeOfDayColorChange(time) {
-    this.setState({ background1: `${time}` });
   }
 
   render () {
@@ -133,12 +193,14 @@ class MainPage extends React.Component {
             </div>
           </div>
           <div className={this.state.background}>
-            <div className={classNames('shape', this.state.background1)}></div>
+            <div className={classNames('shape', this.state.background1, 'foreground-img')}></div>
           </div>
 
-          <div className={classNames('shape', this.state.background2)}></div>
+          <div className={classNames('shape', this.state.background2, 'background-img')}></div>
 
-          <DisplayData colorTransition={this.colorTransition} />
+          <DisplayData
+            colorTransition={this.colorTransition}
+            opacityChange={this.opacityChange} />
           <UserCountFlock
             count={this.state.count}
             divisor={20} />
