@@ -15,7 +15,9 @@ class MainPage extends React.Component {
       count: 0,
       jobCount: 0,
       opacity: "-dark",
-      phase: 1};
+      phase: 1,
+      ready: false
+    };
 
     this.colorTransition = this.colorTransition.bind(this);
     this.colorTransitionSet = this.colorTransitionSet.bind(this);
@@ -34,10 +36,21 @@ class MainPage extends React.Component {
     this.fetchUsers();
     this.fetchCount();
     this.colorTransition(true);
+    setTimeout(() => this.setState({ready: true}), 5000);
   }
 
   componentWillUnmount() {
     clearTimeout(this.timeoutId);
+  }
+
+  launchFullScreen(element) {
+    if(element.requestFullScreen) {
+      element.requestFullScreen();
+    } else if(element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullScreen) {
+      element.webkitRequestFullScreen();
+    }
   }
 
   fetchUsers() {
@@ -167,7 +180,7 @@ class MainPage extends React.Component {
   }
 
   render () {
-    if (this.state.count === 0) {
+    if (this.state.count === 0 || !this.state.ready) {
       return (
         <div className='loading'>
           <div className="spinner">
@@ -175,11 +188,15 @@ class MainPage extends React.Component {
             <div className="double-bounce2"></div>
           </div>
           <p className="loading-text">Loading...</p>
+          <a className='full-screen-button'
+            onClick={() => {this.launchFullScreen(document.getElementById('app'));}}>
+            Full Screen
+          </a>
         </div>
       );
     } else {
       return (
-        <div className={classNames('Home', 'foo', 'bar')} >
+        <div className={classNames('Home', 'foo', 'bar')}>
           <div className='user-info'>
             <p className='job-count'>{this.state.jobCount} Open Jobs</p>
             <div className={'count-container'}>
