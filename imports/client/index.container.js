@@ -1,11 +1,15 @@
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { People } from '/imports/api/People/people.collection';
+import { HTTP } from 'meteor/http';
+import { Count } from '/imports/api/Count/count.collection';
 import index from './index';
 
 export default createContainer(() => {
-  const fetchCount = (cb) => Meteor.call('userCountAll', cb);
+  const fetchCount = (cb) => HTTP.get('http://my.shop.co/userCounts', cb);
   const fetchJobCount = (cb) => Meteor.call('jobCountAll', cb);
 
-  return {fetchCount: fetchCount, fetchJobCount: fetchJobCount};
+  return {
+    fetchCount: fetchCount,
+    fetchJobCount: fetchJobCount
+  };
 }, index);

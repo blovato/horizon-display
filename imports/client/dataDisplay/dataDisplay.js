@@ -20,6 +20,10 @@ class DataDisplay extends React.Component {
   componentDidMount() {
     this.handleTime(true);
     this.incrementTime();
+    this.getWeather();
+  }
+
+  getWeather() {
     Meteor.call('weather.getSanFrancisco', (error, res) => {
       if (!error) {
         this.setState({
@@ -46,6 +50,7 @@ class DataDisplay extends React.Component {
         this.props.colorTransition(now.format('HH'));
       } else if (this.state.time.slice(3) === '30') {
         this.props.opacityChange();
+        this.getWeather();
       }
       this.setState({date: now.format('MMMM DD'), time: now.format('HH:mm')});
     }

@@ -1,6 +1,7 @@
 import { Picker } from 'meteor/meteorhacks:picker';
 import bodyParser from 'body-parser';
-import { People } from './People/people.collection';
+// import { People } from './People/people.collection';
+import { Count } from './Count/count.collection';
 
 Picker.middleware(bodyParser.urlencoded({ extended: false }));
 Picker.middleware(bodyParser.json());

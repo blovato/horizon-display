@@ -18,7 +18,10 @@ class MainPage extends React.Component {
       phase: 1};
 
     this.colorTransition = this.colorTransition.bind(this);
-    this.initializePhase = this.initializePhase.bind(this);
+    this.colorTransitionSet = this.colorTransitionSet.bind(this);
+    this.changePhase = this.changePhase.bind(this);
+    this.opacityChange = this.opacityChange.bind(this);
+    this.fetchCount = this.fetchCount.bind(this);
   }
 
   componentWillReceiveProps({ count }) {
@@ -28,7 +31,7 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    // this.fetchUsers();
+    this.fetchUsers();
     this.fetchCount();
     this.colorTransition(true);
   }
@@ -38,11 +41,14 @@ class MainPage extends React.Component {
   }
 
   fetchUsers() {
-    this.props.fetchCount((error, count) => {
+    this.props.fetchCount((error, response) => {
       if (error) {
         this.setState({count: 10000});
       } else {
-        this.setState({count: count});
+        const countObj = JSON.parse(response.content);
+        const userCount = countObj.totalUserCount - countObj.shopCoUserCount;
+
+        this.setState({count: userCount});
       }
     });
     setTimeout(() => this.fetchUsers(), 60000);
@@ -72,7 +78,6 @@ class MainPage extends React.Component {
   colorTransition(initialize = false) {
     if (initialize) {
       this.initializePhase();
-      // this.colorTransitionSet();
     } else {
       this.changePhase();
     }
@@ -105,7 +110,6 @@ class MainPage extends React.Component {
     const hour = time.getHours();
     const minute = Number(time.getMinutes());
 
-
     if (phaseTimes[hour] && (minute < 30)) {
       this.setState(
         {phase: phaseTimes[hour], opacity: '-dark'},
@@ -114,6 +118,11 @@ class MainPage extends React.Component {
     } else if (phaseTimes[hour] === undefined && (minute >= 30 && minute < 60)) {
       this.setState(
         {phase: phaseTimes[hour - 1] + 1, opacity: '-dark'},
+        () => this.colorTransitionSet(true)
+      );
+    } else if (phaseTimes[hour] === undefined) {
+      this.setState(
+        {phase: phaseTimes[hour - 1] + 1, opacity: ''},
         () => this.colorTransitionSet(true)
       );
     } else {
@@ -125,21 +134,7 @@ class MainPage extends React.Component {
 
   }
 
-  // initializeTime(hour) {
-  //   if (hour >= 6 && hour< 8) {
-  //     return "sunrise";
-  //   // } else if (hour >= 8 && hour< 20) {
-  //   } else if (true) {
-  //     return "daytime";
-  //   } else if (hour >= 20 && hour< 22) {
-  //     return "dusk";
-  //   } else if (hour >= 22 || hour < 6) {
-  //     return "night";
-  //   }
-  // }
-
   colorTransitionSet(initialize = false) {
-    debugger
     const phaseColors = {
       1: ['N1', 'N2'], 3: ['N2', 'N3'], 5: ['N3', 'N4'],  7: ['N4', 'D1'],
       9: ['D1', 'D2'], 11: ['D2', 'D3'], 13: ['D3', 'D4'], 15: ['D4', 'D5'],
@@ -152,6 +147,7 @@ class MainPage extends React.Component {
       color1 = phaseColors[this.state.phase][0];
       color2 = phaseColors[this.state.phase][1];
     } else {
+      debugger
       color1 = phaseColors[this.state.phase - 1][1];
       color2 = phaseColors[this.state.phase - 1][0];
     }

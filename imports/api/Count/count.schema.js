@@ -1,12 +1,12 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const PeopleSchema = new SimpleSchema({
+export const CountSchema = new SimpleSchema({
   _id: {
     type: SimpleSchema.RegEx.Id,
     optional: true,
   },
-  email: {
-    type: String,
+  count: {
+    type: Number,
   },
   createdAt: {
     type: Date,

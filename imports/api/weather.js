@@ -8,7 +8,7 @@ const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
 Meteor.methods({
   'weather.getSanFrancisco'() {
     if (Meteor.isServer) {
-      return fetch.get(`${baseUrl}?zip=94103,US&appid=${WEATHER_API_KEY}`)
+      return fetch.get(`${baseUrl}?zip=94103,US&appid=${WEATHER_API_KEY}`);
     }
   },
 });
