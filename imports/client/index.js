@@ -12,7 +12,7 @@ class MainPage extends React.Component {
     this.state = {background1: '',
       background2: '',
       background: 'background-1',
-      count: 10,
+      count: 0,
       jobCount: 0,
       opacity: "-dark",
       phase: 1};
@@ -147,7 +147,6 @@ class MainPage extends React.Component {
       color1 = phaseColors[this.state.phase][0];
       color2 = phaseColors[this.state.phase][1];
     } else {
-      debugger
       color1 = phaseColors[this.state.phase - 1][1];
       color2 = phaseColors[this.state.phase - 1][0];
     }

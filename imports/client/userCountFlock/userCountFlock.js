@@ -62,6 +62,7 @@ class UserCountFlock extends React.Component {
     while (this.nodes.length < flockCount + 1) {
       this.nodes.push({radius: Math.random() * 12 + size});
     }
+
     this.force.resume();
   }
 
