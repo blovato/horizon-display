@@ -10,4 +10,4 @@ git commit -m 'commit message'
 git push heroku master
 ```
 
-[Other Helpful information](http://www.unbrewd.us)https://devcenter.heroku.com/articles/git#prerequisites-installing-git-and-the-heroku-cli)
+[Other Helpful information] (https://devcenter.heroku.com/articles/git#prerequisites-installing-git-and-the-heroku-cli)
